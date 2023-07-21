@@ -58,7 +58,8 @@ public class Managers : MonoBehaviour
     public IEnumerator CoDataManagerInit()
     {
         // 추가될 json 데이터들 가져오는 코루틴 넣어주기
-        StartCoroutine(Managers.Data.CoDownloadDataSheet());
+        StartCoroutine(Managers.Data.CoDownloadMonsterDataSheet());
+        StartCoroutine(Managers.Data.CoDownloadTreeDataSheet());
 
         yield return null;
     }

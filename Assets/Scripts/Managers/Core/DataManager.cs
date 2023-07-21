@@ -5,16 +5,29 @@ using UnityEngine.Networking;
 
 public class DataManager
 {
-    public IEnumerator CoDownloadDataSheet()
+    public List<float> MonsterData = new List<float>();
+    public List<float> TreeData = new List<float>();
+    public IEnumerator CoDownloadMonsterDataSheet()
     {
-        UnityWebRequest www = UnityWebRequest.Get(Managers.URL.ExcelURL);
+        UnityWebRequest www = UnityWebRequest.Get(Managers.URL.MonsterExcelURL);
         yield return www.SendWebRequest();
 
         string data = www.downloadHandler.text;
         Debug.Log(data);
-        Deserialization(data);
+        Deserialization(data, MonsterData);
+        // TODO
+        Managers.Game.LoadCompleted = true;
     }
-    void Deserialization(string data)
+    public IEnumerator CoDownloadTreeDataSheet()
+    {
+        UnityWebRequest www = UnityWebRequest.Get(Managers.URL.TreeExcelURL);
+        yield return www.SendWebRequest();
+
+        string data = www.downloadHandler.text;
+        Debug.Log(data);
+        Deserialization(data, TreeData);
+    }
+    void Deserialization(string data, List<float> datas)
     {
         string[] row = data.Split('\n');
         int rowSize = row.Length;
@@ -24,8 +37,13 @@ public class DataManager
             string[] column = row[i].Split("\t");
             for (int j = 0; j < columnSize; j++)
             {
-                Debug.Log(column[j]);
-                // 나중에 int.Parse(column[원하는 인덱스])로 값 넣어주면 됨
+                //Debug.Log(column[j]);
+                int value;
+                bool isInt = int.TryParse(column[j], out value);
+                if (isInt)
+                    datas.Add(value);
+                else
+                    datas.Add(-1);
             }
         }
     }

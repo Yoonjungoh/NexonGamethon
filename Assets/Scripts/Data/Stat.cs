@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Stat : MonoBehaviour
 {
-    public int Hp;
-    public int Attack;
+    public float Hp;
+    public float Attack;
     public float MoveSpeed;
     public float AttackSpeed;
+    public float AttackRange;
+    public Stat(float hp, float attack, float moveSpeed, float attackSpeed, float attackRange)
+    {
+        Hp = hp;
+        Attack = attack;
+        MoveSpeed = moveSpeed;
+        AttackSpeed = attackSpeed;
+        AttackRange = attackRange;
+    }
 }

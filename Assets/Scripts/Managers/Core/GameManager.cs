@@ -6,4 +6,5 @@ public class GameManager
 {
     public int Id = 100;
     public int coin;
+    public bool LoadCompleted = false;
 }
