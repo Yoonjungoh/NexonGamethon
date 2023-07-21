@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class Define
 {
+    public enum TurretType
+    {
+
+    }
+    public enum MonsterType
+    {
+        Tank,
+        Fire,
+        Bomb,
+    }
     public enum MoveDir
     {
         None,

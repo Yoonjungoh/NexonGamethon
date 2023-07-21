@@ -60,6 +60,7 @@ public class Managers : MonoBehaviour
         // 추가될 json 데이터들 가져오는 코루틴 넣어주기
         StartCoroutine(Managers.Data.CoDownloadMonsterDataSheet());
         StartCoroutine(Managers.Data.CoDownloadTreeDataSheet());
+        StartCoroutine(Managers.Data.CoDownloadTurretDataSheet());
 
         yield return null;
     }

@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
+  - Turret
+  - TurretPlace
+  - SpawnPoint
+  - TurretImage
+  - Ground
   layers:
   - Default
   - TransparentFX

@@ -9,4 +9,5 @@ public class URLManager
     // 파싱할 Google Excel의 서버 주소
     public string MonsterExcelURL = "https://docs.google.com/spreadsheets/d/1xuE6oeBAJAG2hCicc8MAQDSwpQyPUJ6kXs8Rqdd2q8I/export?format=tsv";
     public string TreeExcelURL = "https://docs.google.com/spreadsheets/d/1f1CuHW1khnSGupcvn6W8HvHLlWQt3dvASy2lzMnpzYs/export?format=tsv";
+    public string TurretExcelURL = "https://docs.google.com/spreadsheets/d/1VnbBfUGZow2KewT4EYSFvhBEYsmgkC8hHocyy7H7WK4/export?format=tsv";
 }

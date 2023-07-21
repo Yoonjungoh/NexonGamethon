@@ -7,6 +7,7 @@ public class DataManager
 {
     public List<float> MonsterData = new List<float>();
     public List<float> TreeData = new List<float>();
+    public List<float> TurretData = new List<float>();
     public IEnumerator CoDownloadMonsterDataSheet()
     {
         UnityWebRequest www = UnityWebRequest.Get(Managers.URL.MonsterExcelURL);
@@ -26,6 +27,15 @@ public class DataManager
         string data = www.downloadHandler.text;
         Debug.Log(data);
         Deserialization(data, TreeData);
+    }
+    public IEnumerator CoDownloadTurretDataSheet()
+    {
+        UnityWebRequest www = UnityWebRequest.Get(Managers.URL.TurretExcelURL);
+        yield return www.SendWebRequest();
+
+        string data = www.downloadHandler.text;
+        Debug.Log(data);
+        Deserialization(data, TurretData);
     }
     void Deserialization(string data, List<float> datas)
     {
