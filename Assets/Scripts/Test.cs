@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager
+public class Test : MonoBehaviour
 {
-    public int Id = 100;
-    public int coin;
+    void Start()
+    {   
+
+    }
 }

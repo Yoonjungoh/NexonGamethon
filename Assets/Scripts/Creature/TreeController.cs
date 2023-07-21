@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager
+public class TreeController : CreatureController
 {
-    public int Id = 100;
-    public int coin;
 }
