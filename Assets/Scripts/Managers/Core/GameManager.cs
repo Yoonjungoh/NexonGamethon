@@ -16,4 +16,8 @@ public class GameManager
     public int OwlTurretLevel = 1;
     public int DeerTurretLevel = 1;
     public int BearTurretLevel = 1;
+    public float[] SquirrelCost;
+    public float[] OwlCost;
+    public float[] DeerCost;
+    public float[] BearCost;
 }

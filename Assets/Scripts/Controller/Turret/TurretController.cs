@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
-    protected Define.TurretType type;
+    public Define.TurretType type;
     protected Animator animator;
     public Stat Stat;
     protected float fireTimer = 0f;
@@ -13,8 +13,8 @@ public class TurretController : MonoBehaviour
     public float[] cost = new float[3];
     public int level = 1;
     public float bulletSpeed = 30;
-    protected GameObject[] bulletPoints;
-
+    protected List<GameObject> bulletPoints = new List<GameObject>();
+    protected GameObject bullet;
     protected virtual void Init()
     {
         animator = GetComponent<Animator>();
@@ -23,11 +23,21 @@ public class TurretController : MonoBehaviour
         Stat = new Stat();
         InitStat();
         InitBulletPoint();
+        bullet = Managers.Resource.Load<GameObject>($"Creature/Bullet/{type}Bullet");
         fireDelay = Stat.AttackSpeed;
     }
     protected virtual void InitBulletPoint()
     {
-        bulletPoints = GameObject.FindGameObjectsWithTag("BulletPoint");
+        if (type != Define.TurretType.Bear)
+        {
+            bulletPoints.Add(transform.GetChild(0).gameObject);
+        }
+        else
+        {
+            bulletPoints.Add(transform.GetChild(0).gameObject);
+            bulletPoints.Add(transform.GetChild(1).gameObject);
+            bulletPoints.Add(transform.GetChild(2).gameObject);
+        }
     }
     protected virtual void UpdateController()
     {
@@ -69,7 +79,7 @@ public class TurretController : MonoBehaviour
     }
     protected virtual void Fire(MonsterController monster)
     {
-        BulletController bc = Managers.Resource.Instantiate("Creature/Bullet").GetComponent<BulletController>();
+        BulletController bc = Managers.Resource.Instantiate(bullet).GetComponent<BulletController>();
         if (type != Define.TurretType.Bear)
         {
             bc.transform.position = bulletPoints[0].transform.position;
@@ -77,6 +87,11 @@ public class TurretController : MonoBehaviour
             bc.targetPosition = monster.transform.position;
             bc.Owner = this;
             bc.bulletSpeed = bulletSpeed;
+            // 规氢 贸府
+            Vector3 direction = monster.transform.position - transform.position;
+            direction.z = 0f;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            bc.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
         }
         // 磅 老 锭 魂藕 贸府
         else
