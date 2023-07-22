@@ -10,4 +10,5 @@ public class GameManager
     public List<BranchController> InGameBranches = new List<BranchController>();
     public List<MonsterController> monsters = new List<MonsterController>();
     public int CurrentStage = 1;
+    public SpawnPoint[] SpawnPoints;
 }

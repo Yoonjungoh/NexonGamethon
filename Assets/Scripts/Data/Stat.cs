@@ -9,6 +9,7 @@ public class Stat : MonoBehaviour
     public float MoveSpeed;
     public float AttackSpeed;
     public float AttackRange;
+    public float Cost;
     public Stat(float hp, float attack, float moveSpeed, float attackSpeed, float attackRange)
     {
         Hp = hp;

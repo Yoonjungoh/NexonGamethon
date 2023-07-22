@@ -5,8 +5,20 @@ using UnityEngine;
 public class TouchTurretController : MonoBehaviour
 {
     GameObject[] images;
+    UI_Turret turretUI;
+    void Start()
+    {
+    }
     private void OnMouseDown()
     {
+        for (int i = 0; i < Managers.Game.SpawnPoints.Length; i++)
+        {
+            if (Managers.Game.SpawnPoints[i].spawnPoint.transform.position + Vector3.up == gameObject.transform.position)
+            {
+                Managers.Game.SpawnPoints[i].IsFull = true;
+                break;
+            }
+        }
         images = GameObject.FindGameObjectsWithTag("TurretImage");
         foreach (GameObject go in images)
         {

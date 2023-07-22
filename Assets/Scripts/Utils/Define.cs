@@ -6,7 +6,10 @@ public class Define
 {
     public enum TurretType
     {
-
+        Squirrel,
+        Owl,
+        Deer,
+        Bear,
     }
     public enum MonsterType
     {
