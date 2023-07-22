@@ -173,7 +173,18 @@ public class MonsterController : CreatureController
     protected IEnumerator CoCommonAttack()
     {
         _target.OnDamaged(Stat.Attack);
-        //_animator.Play($"{type}_ATTACK");
+        switch (type)
+        {
+            case Define.MonsterType.Common:
+                _animator.Play("COMMON_ATTACK");
+                break;
+            case Define.MonsterType.Fast:
+                _animator.Play("FAST_ATTACK");
+                break;
+            case Define.MonsterType.Tank:
+                //_animator.Play("TANK_ATTACK");
+                break;
+        }
         yield return new WaitForSeconds(Stat.AttackSpeed);
         StartCoroutine(CoCommonAttack());
     }
@@ -194,7 +205,6 @@ public class MonsterController : CreatureController
     }
     protected void Fire()
     {
-        //_animator.Play($"{type}_ATTACK");
         IcicleController ic = Managers.Resource.Instantiate(icicle).GetComponent<IcicleController>();
         ic.transform.position = bulletPoint.transform.position;
         ic.bulletSpeed = bulletSpeed;
