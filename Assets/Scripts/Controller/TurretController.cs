@@ -5,13 +5,16 @@ using UnityEngine;
 public class TurretController : MonoBehaviour
 {
     Define.TurretType type;
-    public Stat Stat;
+    public Stat Stat = new Stat();
     float fireTimer = 0f;
     float fireDelay = 1f;
     void Start()
     {
         string turretName = (gameObject.name).Substring(0, gameObject.name.Length - 5);
-        Stat = new Stat(1, 1, 1, 1, 15);
+        Stat.Attack = Managers.Data.TurretData[9];
+        Stat.AttackSpeed = Managers.Data.TurretData[10];
+        Stat.AttackRange = Managers.Data.TurretData[11];
+        //Stat = new Stat(1, 1, 1, 1, 15);
     }
     void Update()
     {
@@ -30,11 +33,19 @@ public class TurretController : MonoBehaviour
         // xÃà ¿ì¼± Å½»ö
         if (fireTimer >= fireDelay)
         {
-            MonsterController monster = FindMonster();
-            if (monster != null)
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, Stat.AttackRange);
+            for (int i = 0; i < colliders.Length; i++)
             {
-                Fire(monster.transform.position);
-                fireTimer = 0f;
+                if (colliders[i].tag == "Monster")
+                {
+                    MonsterController monster = FindMonster();
+                    if (monster != null)
+                    {
+                        Fire(monster.transform.position);
+                        fireTimer = 0f;
+                    }
+                    break;
+                }
             }
         }
     }
@@ -63,6 +74,6 @@ public class TurretController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 15);
+        Gizmos.DrawWireSphere(transform.position, Stat.AttackRange);
     }
 }

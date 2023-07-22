@@ -106,7 +106,6 @@ public class MonsterController : CreatureController
         timer += Time.deltaTime;
         if (timer > MovingDelay)
         {
-            Debug.Log("후발 주자 움직임");
             State = Define.CreatureState.Moving;
         }
     }

@@ -17,4 +17,8 @@ public class Stat : MonoBehaviour
         AttackSpeed = attackSpeed;
         AttackRange = attackRange;
     }
+    public Stat()
+    {
+
+    }
 }

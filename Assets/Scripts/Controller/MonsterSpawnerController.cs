@@ -16,17 +16,17 @@ public class MonsterSpawnerController : MonoBehaviour
     {
 
     }
-    public void SpawnMonster(string name, int count, float delay)
+    public void SpawnMonster(string name, int count, float delay, Define.MoveDir dir)
     {
         spawnDelay = delay;
         for (int i = 0; i < count; i++)
         {
             GameObject go = Managers.Resource.Instantiate($"Creature/Monster/{name}");
             float randX = Random.Range(1, 3);
-            if (randX == 1)
-                randX = -20;
+            if (dir == Define.MoveDir.Left)
+                randX = -15;
             else
-                randX = 20;
+                randX = 15;
             go.transform.position = new Vector3(randX, 1, 1);
             MonsterController monster = go.GetComponent<MonsterController>();
             Managers.Game.monsters.Add(monster);
