@@ -10,11 +10,15 @@ public class Stage1Controller : MonoBehaviour
     bool[] waves3 = new bool[8];
     bool[] waves4 = new bool[8];
     bool[] waves5 = new bool[9];
+
+    int perCrystal = 2;
     MonsterSpawnerController msc;
     float crystalTimer = 0f;
     void Start()
     {
+        Managers.Game.Gaming = true;
         msc = GetComponent<MonsterSpawnerController>();
+        Managers.Game.KillCount = 0;
     }
     void Stage1()
     {
@@ -22,30 +26,30 @@ public class Stage1Controller : MonoBehaviour
         crystalTimer += Time.deltaTime;
         if (crystalTimer >= 1f)
         {
-            Managers.Game.Crystal += 1;
+            Managers.Game.Crystal += perCrystal;
             crystalTimer = 0f;
         }
         if (Timer >= 2f && waves1[0] == false)
         {
             waves1[0] = true;
-            msc.SpawnMonster(Define.MonsterType.Common, 15, 3f, Define.MoveDir.Left);
-            //msc.SpawnMonster("EliteMonster", Define.MoveDir.Left);
+            //msc.SpawnMonster(Define.MonsterType.Common, 15, 3f, Define.MoveDir.Left);
+            msc.SpawnMonster("EliteMonster", Define.MoveDir.Left);
         }
-        if (Timer >= 11.3f && waves1[1] == false)
-        {
-            waves1[1] = true;
-            msc.SpawnMonster("FireMonster", 12, 3f, Define.MoveDir.Left);
-        }
-        if (Timer >= 20f && waves1[2] == false)
-        {
-            waves1[2] = true;
-            msc.SpawnMonster("CommonMonster", 8, 3f, Define.MoveDir.Right);
-        }
-        if (Timer >= 26.3f && waves1[3] == false)
-        {
-            waves1[3] = true;
-            msc.SpawnMonster("CommonMonster", 6, 3f, Define.MoveDir.Right);
-        }
+        //if (Timer >= 11.3f && waves1[1] == false)
+        //{
+        //    waves1[1] = true;
+        //    msc.SpawnMonster("FireMonster", 12, 3f, Define.MoveDir.Left);
+        //}
+        //if (Timer >= 20f && waves1[2] == false)
+        //{
+        //    waves1[2] = true;
+        //    msc.SpawnMonster("CommonMonster", 8, 3f, Define.MoveDir.Right);
+        //}
+        //if (Timer >= 26.3f && waves1[3] == false)
+        //{
+        //    waves1[3] = true;
+        //    msc.SpawnMonster("CommonMonster", 6, 3f, Define.MoveDir.Right);
+        //}
     }
     void Stage2()
     {
@@ -53,7 +57,7 @@ public class Stage1Controller : MonoBehaviour
         crystalTimer += Time.deltaTime;
         if (crystalTimer >= 1f)
         {
-            Managers.Game.Crystal += 1;
+            Managers.Game.Crystal += perCrystal;
             crystalTimer = 0f;
         }
         if (Timer >= 1f && waves2[0] == false)
@@ -93,7 +97,7 @@ public class Stage1Controller : MonoBehaviour
         crystalTimer += Time.deltaTime;
         if (crystalTimer >= 1f)
         {
-            Managers.Game.Crystal += 1;
+            Managers.Game.Crystal += perCrystal;
             crystalTimer = 0f;
         }
         if (Timer >= 1f && waves3[0] == false)
@@ -143,7 +147,7 @@ public class Stage1Controller : MonoBehaviour
         crystalTimer += Time.deltaTime;
         if (crystalTimer >= 1f)
         {
-            Managers.Game.Crystal += 1;
+            Managers.Game.Crystal += perCrystal;
             crystalTimer = 0f;
         }
         if (Timer >= 1f && waves4[0] == false)
@@ -193,7 +197,7 @@ public class Stage1Controller : MonoBehaviour
         crystalTimer += Time.deltaTime;
         if (crystalTimer >= 1f)
         {
-            Managers.Game.Crystal += 1;
+            Managers.Game.Crystal += perCrystal;
             crystalTimer = 0f;
         }
         if (Timer >= 1f && waves5[0] == false)
@@ -245,23 +249,26 @@ public class Stage1Controller : MonoBehaviour
 
     void Update()
     {
-        switch (Managers.Game.CurrentStage)
+        if (Managers.Game.Gaming)
         {
-            case 1:
-                Stage1();
-                break;
-            case 2:
-                Stage2();
-                break;
-            case 3:
-                Stage3();
-                break;
-            case 4:
-                Stage4();
-                break;
-            case 5:
-                Stage5();
-                break;
+            switch (Managers.Game.CurrentStage)
+            {
+                case 1:
+                    Stage1();
+                    break;
+                case 2:
+                    Stage2();
+                    break;
+                case 3:
+                    Stage3();
+                    break;
+                case 4:
+                    Stage4();
+                    break;
+                case 5:
+                    Stage5();
+                    break;
+            }
         }
     }
 }

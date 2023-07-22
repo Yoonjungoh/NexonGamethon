@@ -10,21 +10,21 @@ public class UI_ClearPopup : UI_Popup
     {
         ClearButton,
     }
-    enum Texts
-    {
-        ClearText,
-    }
     void Start()
     {
+        Managers.Game.Gaming = false;
         Bind<Button>(typeof(Buttons));
-        Bind<TextMeshProUGUI>(typeof(Texts));
 
         GetButton((int)Buttons.ClearButton).onClick.AddListener(GoToShopScene);
-        GetTextMeshProUGUI((int)Texts.ClearText).text = "Å¬¸®¾î~!";
+        Managers.Game.InGameBranches.Clear();
+        Managers.Game.monsters.Clear();
+        Managers.Game.Crystal = Managers.Game.CrystalDefaultValue;
     }
 
     void GoToShopScene()
     {
+        Time.timeScale = 1;
         Managers.Scene.LoadScene("OutGame");
+        gameObject.SetActive(true);
     }
 }

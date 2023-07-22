@@ -28,6 +28,8 @@ public class TreeController : CreatureController
     }
     public override void OnDead()
     {
+        Debug.Log("³ª¹« Á×À½");
         Managers.UI.ShowPopupUI<UI_DeadPopup>();
+        Time.timeScale = 0;
     }
 }

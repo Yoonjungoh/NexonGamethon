@@ -69,13 +69,16 @@ public class TurretController : MonoBehaviour
     {
         float minX = float.MaxValue;
         MonsterController target = null;
-        foreach (MonsterController monster in Managers.Game.monsters)
+        if (Managers.Game.monsters.Count != 0)
         {
-            float value = Mathf.Abs(transform.position.x - monster.transform.position.x);
-            if (minX > value)
+            foreach (MonsterController monster in Managers.Game.monsters)
             {
-                minX = value;
-                target = monster;
+                float value = Mathf.Abs(transform.position.x - monster.transform.position.x);
+                if (minX > value)
+                {
+                    minX = value;
+                    target = monster;
+                }
             }
         }
         return target;

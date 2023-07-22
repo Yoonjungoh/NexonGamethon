@@ -22,7 +22,7 @@ public class UI_Turret : UI_Scene
         SquirrelCostText,
         DeerCostText,
         OwlCostText,
-        BearCostButton
+        BearCostText
     }
     void Start()
     {

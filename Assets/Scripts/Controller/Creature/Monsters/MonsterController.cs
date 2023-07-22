@@ -143,6 +143,7 @@ public class MonsterController : CreatureController
         if (timer > MovingDelay)
         {
             State = Define.CreatureState.Moving;
+            MovingDelay = 100000f;
         }
     }
     bool isDetect = false;
@@ -175,9 +176,29 @@ public class MonsterController : CreatureController
     public override void OnDead()
     {
         Managers.Game.monsters.Remove(this);
-        if (Managers.Game.monsters.Count == 0)
-            Managers.UI.ShowPopupUI<UI_ClearPopup>();
         Managers.Game.Crystal += (int)coin;
+        Managers.Game.KillCount++;
+        Debug.Log(Managers.Game.KillCount);
+        if (Managers.Game.CurrentStage == 1)
+        {
+            if (Managers.Game.KillCount == Managers.Game.Wave1Count)
+                Managers.Game.ClearStage();
+        }
+        else if (Managers.Game.CurrentStage == 2)
+        {
+            if (Managers.Game.KillCount == Managers.Game.Wave2Count)
+                Managers.Game.ClearStage();
+        }
+        else if (Managers.Game.CurrentStage == 3)
+        {
+            if (Managers.Game.KillCount == Managers.Game.Wave3Count)
+                Managers.Game.ClearStage();
+        }
+        else if (Managers.Game.CurrentStage == 4)
+        {
+            if (Managers.Game.KillCount == Managers.Game.Wave4Count)
+                Managers.Game.ClearStage();
+        }
         base.OnDead();
     }
     protected IEnumerator CoCommonAttack()
@@ -212,11 +233,30 @@ public class MonsterController : CreatureController
         _target.OnDamaged(Stat.Attack);
         Managers.Resource.Destroy(gameObject);
     }
+    protected void EliteAttack()
+    {
+        _target.OnDamaged(Stat.Attack);
+    }
+    protected void EliteAttack2()
+    {
+        _target.OnDamaged(Stat.Attack * 2f);
+    }
     protected IEnumerator CoFireAttack()
     {
         Fire();
         yield return new WaitForSeconds(Stat.AttackSpeed);
         StartCoroutine(CoFireAttack());
+    }
+    protected IEnumerator CoEliteAttack()
+    {
+        State = Define.CreatureState.Skill;
+        int rand = Random.Range(1, 3);
+        if (rand == 1)
+            _animator.Play("ELITE_ATTACK1");
+        else if (rand == 2)
+            _animator.Play("ELITE_ATTACK2");
+        yield return new WaitForSeconds(Stat.AttackSpeed);
+        StartCoroutine(CoEliteAttack());
     }
     protected void Fire()
     {
@@ -246,7 +286,7 @@ public class MonsterController : CreatureController
                     StartCoroutine(CoBombAttack());
                     break;
                 case Define.MonsterType.Elite:
-                    StartCoroutine(CoCommonAttack());
+                    StartCoroutine(CoEliteAttack());
                     break;
                 default:
                     break;
