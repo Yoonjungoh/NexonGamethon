@@ -5,20 +5,23 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public float speed = 15f;
-    private int doubleSpeed = 3;
+    private int doubleSpeed = 4;
+    private float maxDistance = 31.5f;
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position -= new Vector3(Time.deltaTime * speed, 0, 0);
+            if (transform.position.x > -maxDistance)
+                transform.position -= new Vector3(Time.deltaTime * speed, 0, 0);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position += new Vector3(Time.deltaTime * speed, 0, 0);
+            if (transform.position.x < maxDistance)
+                transform.position += new Vector3(Time.deltaTime * speed, 0, 0);
         }
         if (Input.GetKeyDown(KeyCode.P))
-            Time.timeScale *= 3;
+            Time.timeScale *= doubleSpeed;
         if (Input.GetKeyUp(KeyCode.P))
-            Time.timeScale /= 3;
+            Time.timeScale /= doubleSpeed;
     }
 }

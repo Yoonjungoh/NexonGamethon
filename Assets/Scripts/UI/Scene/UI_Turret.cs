@@ -45,10 +45,10 @@ public class UI_Turret : UI_Scene
         GetButton((int)Buttons.OwlTurretButton).onClick.AddListener(() => BuyTurret("OwlTurretImage"));
         GetButton((int)Buttons.BearTurretButton).onClick.AddListener(() => BuyTurret("BearTurretImage"));
 
-        GetTextMeshProUGUI((int)Texts.SquirrelCostText).text = $"{Managers.Game.SquirrelCost[Managers.Game.SquirrelTurretLevel - 1]} 农府胶呕";
-        GetTextMeshProUGUI((int)Texts.DeerCostText).text = $"{Managers.Game.DeerCost[Managers.Game.DeerTurretLevel - 1]} 农府胶呕";
-        GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"{Managers.Game.OwlCost[Managers.Game.OwlTurretLevel - 1]} 农府胶呕";
-        GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"{Managers.Game.OwlCost[Managers.Game.OwlTurretLevel - 1]} 农府胶呕";
+        GetTextMeshProUGUI((int)Texts.SquirrelCostText).text = $"{Managers.Game.SquirrelCost[Managers.Game.SquirrelTurretLevel - 1]}";
+        GetTextMeshProUGUI((int)Texts.DeerCostText).text = $"{Managers.Game.DeerCost[Managers.Game.DeerTurretLevel - 1]}";
+        GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"{Managers.Game.OwlCost[Managers.Game.OwlTurretLevel - 1]}";
+        GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"{Managers.Game.OwlCost[Managers.Game.OwlTurretLevel - 1]}";
 
         GameObject[] gos = GameObject.FindGameObjectsWithTag("SpawnPoint");
         spawnPoints = new SpawnPoint[gos.Length]; 
