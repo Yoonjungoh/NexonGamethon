@@ -28,7 +28,6 @@ public class Stage1Controller : MonoBehaviour
         if (Timer >= 2f && waves1[0] == false)
         {
             waves1[0] = true;
-            //msc.SpawnMonster("BombMonster", 15, 3f, Define.MoveDir.Left);
             msc.SpawnMonster(Define.MonsterType.Common, 15, 3f, Define.MoveDir.Left);
         }
         if (Timer >= 11.3f && waves1[1] == false)
@@ -96,99 +95,152 @@ public class Stage1Controller : MonoBehaviour
             Managers.Game.Crystal += 1;
             crystalTimer = 0f;
         }
-        if (Timer >= 1f && waves2[0] == false)
+        if (Timer >= 1f && waves3[0] == false)
         {
-            waves2[0] = true;
-            msc.SpawnMonster("TankMonster", 12, 4f, Define.MoveDir.Left);
+            waves3[0] = true;
+            msc.SpawnMonster(Define.MonsterType.Tank, 10, 4f, Define.MoveDir.Right);
         }
-        if (Timer >= 7f && waves2[1] == false)
+        if (Timer >= 3f && waves3[1] == false)
         {
-            waves2[1] = true;
-            msc.SpawnMonster("CommonMonster", 18, 3f, Define.MoveDir.Left);
+            waves3[1] = true;
+            msc.SpawnMonster(Define.MonsterType.Tank, 18, 3f, Define.MoveDir.Left);
         }
-        if (Timer >= 8f && waves2[2] == false)
+        if (Timer >= 10f && waves3[2] == false)
         {
-            waves2[2] = true;
-            msc.SpawnMonster("FireMonster", 18, 3f, Define.MoveDir.Left);
+            waves3[2] = true;
+            msc.SpawnMonster(Define.MonsterType.Common, 5, 3f, Define.MoveDir.Left);
         }
-        if (Timer >= 18f && waves2[3] == false)
+        if (Timer >= 13f && waves3[3] == false)
         {
-            waves2[3] = true;
-            msc.SpawnMonster("TankMonster", 6, 4f, Define.MoveDir.Right);
+            waves3[3] = true;
+            msc.SpawnMonster(Define.MonsterType.Common, 6, 3f, Define.MoveDir.Right);
         }
-        if (Timer >= 24f && waves2[4] == false)
+        if (Timer >= 14f && waves3[4] == false)
         {
-            waves2[4] = true;
-            msc.SpawnMonster("CommonMonster", 12, 3f, Define.MoveDir.Right);
+            waves3[4] = true;
+            msc.SpawnMonster(Define.MonsterType.Fast, 3, 2f, Define.MoveDir.Left);
         }
-        if (Timer >= 25f && waves2[5] == false)
+        if (Timer >= 18f && waves3[5] == false)
         {
-            waves2[5] = true;
-            msc.SpawnMonster("FireMonster", 12, 3f, Define.MoveDir.Right);
+            waves3[5] = true;
+            msc.SpawnMonster(Define.MonsterType.Fast, 10, 2f, Define.MoveDir.Right);
+        }
+        if (Timer >= 21f && waves3[6] == false)
+        {
+            waves3[6] = true;
+            msc.SpawnMonster(Define.MonsterType.Fire, 7, 3f, Define.MoveDir.Left);
+        }
+        if (Timer >= 28f && waves3[7] == false)
+        {
+            waves3[7] = true;
+            msc.SpawnMonster(Define.MonsterType.Fire, 3, 3f, Define.MoveDir.Right);
         }
     }
-    //void Stage4()
-    //{
-    //    Timer += Time.deltaTime;
-    //    crystalTimer += Time.deltaTime;
-    //    if (crystalTimer >= 1f)
-    //    {
-    //        Managers.Game.Crystal += 1;
-    //        crystalTimer = 0f;
-    //    }
-    //    if (Timer >= 2f && waves[0] == false)
-    //    {
-    //        waves[0] = true;
-    //        //msc.SpawnMonster("BombMonster", 15, 3f, Define.MoveDir.Left);
-    //        msc.SpawnMonster("CommonMonster", 15, 3f, Define.MoveDir.Left);
-    //    }
-    //    if (Timer >= 11.3f && waves[1] == false)
-    //    {
-    //        waves[1] = true;
-    //        msc.SpawnMonster("FireMonster", 12, 3f, Define.MoveDir.Left);
-    //    }
-    //    if (Timer >= 20f && waves[2] == false)
-    //    {
-    //        waves[2] = true;
-    //        msc.SpawnMonster("CommonMonster", 8, 3f, Define.MoveDir.Right);
-    //    }
-    //    if (Timer >= 26.3f && waves[3] == false)
-    //    {
-    //        waves[3] = true;
-    //        msc.SpawnMonster("CommonMonster", 6, 3f, Define.MoveDir.Right);
-    //    }
-    //}
-    //void Stage5()
-    //{
-    //    Timer += Time.deltaTime;
-    //    crystalTimer += Time.deltaTime;
-    //    if (crystalTimer >= 1f)
-    //    {
-    //        Managers.Game.Crystal += 1;
-    //        crystalTimer = 0f;
-    //    }
-    //    if (Timer >= 2f && waves[0] == false)
-    //    {
-    //        waves[0] = true;
-    //        //msc.SpawnMonster("BombMonster", 15, 3f, Define.MoveDir.Left);
-    //        msc.SpawnMonster("CommonMonster", 15, 3f, Define.MoveDir.Left);
-    //    }
-    //    if (Timer >= 11.3f && waves[1] == false)
-    //    {
-    //        waves[1] = true;
-    //        msc.SpawnMonster("FireMonster", 12, 3f, Define.MoveDir.Left);
-    //    }
-    //    if (Timer >= 20f && waves[2] == false)
-    //    {
-    //        waves[2] = true;
-    //        msc.SpawnMonster("CommonMonster", 8, 3f, Define.MoveDir.Right);
-    //    }
-    //    if (Timer >= 26.3f && waves[3] == false)
-    //    {
-    //        waves[3] = true;
-    //        msc.SpawnMonster("CommonMonster", 6, 3f, Define.MoveDir.Right);
-    //    }
-    //}
+    void Stage4()
+    {
+        Timer += Time.deltaTime;
+        crystalTimer += Time.deltaTime;
+        if (crystalTimer >= 1f)
+        {
+            Managers.Game.Crystal += 1;
+            crystalTimer = 0f;
+        }
+        if (Timer >= 1f && waves4[0] == false)
+        {
+            waves4[0] = true;
+            msc.SpawnMonster(Define.MonsterType.Fast, 6, 2f, Define.MoveDir.Left);
+        }
+        if (Timer >= 8f && waves4[1] == false)
+        {
+            waves4[1] = true;
+            msc.SpawnMonster(Define.MonsterType.Fast, 6, 2f, Define.MoveDir.Right);
+        }
+        if (Timer >= 11f && waves4[2] == false)
+        {
+            waves4[2] = true;
+            msc.SpawnMonster(Define.MonsterType.Tank, 10, 4f, Define.MoveDir.Left);
+        }
+        if (Timer >= 12f && waves4[3] == false)
+        {
+            waves4[3] = true;
+            msc.SpawnMonster(Define.MonsterType.Bomb, 2, 6f, Define.MoveDir.Left);
+        }
+        if (Timer >= 17f && waves4[4] == false)
+        {
+            waves4[4] = true;
+            msc.SpawnMonster(Define.MonsterType.Tank, 5, 3f, Define.MoveDir.Right);
+        }
+        if (Timer >= 19f && waves4[5] == false)
+        {
+            waves4[5] = true;
+            msc.SpawnMonster(Define.MonsterType.Bomb, 3, 5f, Define.MoveDir.Right);
+        }
+        if (Timer >= 21f && waves4[6] == false)
+        {
+            waves4[6] = true;
+            msc.SpawnMonster(Define.MonsterType.Fire, 3, 3f, Define.MoveDir.Right);
+        }
+        if (Timer >= 27f && waves4[7] == false)
+        {
+            waves4[7] = true;
+            msc.SpawnMonster(Define.MonsterType.Fire, 7, 3f, Define.MoveDir.Left);
+        }
+    }
+    void Stage5()
+    {
+        Timer += Time.deltaTime;
+        crystalTimer += Time.deltaTime;
+        if (crystalTimer >= 1f)
+        {
+            Managers.Game.Crystal += 1;
+            crystalTimer = 0f;
+        }
+        if (Timer >= 1f && waves5[0] == false)
+        {
+            waves5[0] = true;
+            msc.SpawnMonster(Define.MonsterType.Tank, 6, 1f, Define.MoveDir.Left);
+        }
+        if (Timer >= 5f && waves5[1] == false)
+        {
+            waves5[1] = true;
+            msc.SpawnMonster("EliteMonster", Define.MoveDir.Left);
+        }
+        if (Timer >= 10f && waves5[2] == false)
+        {
+            waves5[2] = true;
+            msc.SpawnMonster(Define.MonsterType.Fast, 10, 2f, Define.MoveDir.Left);
+        }
+        if (Timer >= 11f && waves5[3] == false)
+        {
+            waves5[3] = true;
+            msc.SpawnMonster(Define.MonsterType.Tank, 2, 3f, Define.MoveDir.Right);
+        }
+        if (Timer >= 15f && waves5[4] == false)
+        {
+            waves5[4] = true;
+            msc.SpawnMonster(Define.MonsterType.Fire, 5, 3f, Define.MoveDir.Left);
+        }
+        if (Timer >= 17f && waves5[5] == false)
+        {
+            waves5[5] = true;
+            msc.SpawnMonster(Define.MonsterType.Fast, 3, 2f, Define.MoveDir.Right);
+        }
+        if (Timer >= 20f && waves5[6] == false)
+        {
+            waves5[6] = true;
+            msc.SpawnMonster(Define.MonsterType.Bomb, 3, 6f, Define.MoveDir.Left);
+        }
+        if (Timer >= 21f && waves5[7] == false)
+        {
+            waves5[7] = true;
+            msc.SpawnMonster(Define.MonsterType.Fire, 7, 3f, Define.MoveDir.Right);
+        }
+        if (Timer >= 30f && waves5[8] == false)
+        {
+            waves5[8] = true;
+            msc.SpawnMonster(Define.MonsterType.Bomb, 7, 2f, Define.MoveDir.Right);
+        }
+    }
 
     void Update()
     {
@@ -204,10 +256,10 @@ public class Stage1Controller : MonoBehaviour
                 Stage3();
                 break;
             case 4:
-                //Stage4();
+                Stage4();
                 break;
             case 5:
-                //Stage5();
+                Stage5();
                 break;
         }
     }

@@ -26,6 +26,7 @@ public class MonsterSpawnerController : MonoBehaviour
             randX = 20;
         go.transform.position = new Vector3(randX, 1, 1);
         MonsterController monster = go.GetComponent<MonsterController>();
+        monster.MovingDelay = 0f;
         Managers.Game.monsters.Add(monster);
     }
     public void SpawnMonster(string type, int count, float delay, Define.MoveDir dir)
