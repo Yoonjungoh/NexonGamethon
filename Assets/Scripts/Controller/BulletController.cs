@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -9,6 +10,9 @@ public class BulletController : MonoBehaviour
     public MonsterController target;
     Rigidbody2D rigid;
     Vector3 direction;
+    public float disappearTime = 3f;
+    public List<MonsterController> monsters = new List<MonsterController>();
+    public bool isStop = false;
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -21,24 +25,45 @@ public class BulletController : MonoBehaviour
             // 총알의 방향을 계산
             rigid.velocity = direction * bulletSpeed;
         }
-        if (targetPosition != Vector3.zero)
-            ShootTowardsTarget();
+        if (targetPosition != Vector3.zero && isStop == false)
+            rigid.velocity = direction * bulletSpeed;
     }
-    public void ShootTowardsTarget()
+    IEnumerator CoDestroyBullet()
     {
-        // 총알의 방향을 계산
-        rigid.velocity = direction * bulletSpeed;
+        yield return new WaitForSeconds(disappearTime);
+        Managers.Resource.Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Ground")
         {
-            Managers.Resource.Destroy(gameObject);
+            isStop = true;
+            // 사슴 총알은 슬로우
+            if (Owner.type == Define.TurretType.Deer)
+            {
+                rigid.velocity = Vector2.zero;
+                rigid.bodyType = RigidbodyType2D.Static;
+                StartCoroutine(CoDestroyBullet());
+            }
+            else
+            {
+                Managers.Resource.Destroy(gameObject);
+            }
         }
         if (collision.tag == "Monster")
         {
-            collision.GetComponent<MonsterController>().OnDamaged(Owner.Stat.Attack);
-            Managers.Resource.Destroy(gameObject);
+            MonsterController monster = collision.GetComponent<MonsterController>();
+            // 사슴 총알은 슬로우
+            if (Owner.type == Define.TurretType.Deer)
+            {
+                monster.OnDamaged(Owner.Stat.Attack);
+                monster.DebuffMoveSpeed();
+            }
+            else
+            {
+                monster.OnDamaged(Owner.Stat.Attack);
+                Managers.Resource.Destroy(gameObject);
+            }
         }
     }
 }

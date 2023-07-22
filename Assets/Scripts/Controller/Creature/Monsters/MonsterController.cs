@@ -10,6 +10,19 @@ public class MonsterController : CreatureController
     public Define.MoveDir moveDir;
     public float MovingDelay = 100f;
     public float coin;
+    public float originalSpeed;
+    public float debuffTime = 3f;
+    public float debuffMoveSpeed = 0.3f;
+    public void DebuffMoveSpeed()
+    {
+        StartCoroutine(CoDebuffMoveSpeed());
+    }
+    IEnumerator CoDebuffMoveSpeed()
+    {
+        Stat.MoveSpeed = Stat.MoveSpeed - Stat.MoveSpeed * debuffMoveSpeed;
+        yield return new WaitForSeconds(debuffTime);
+        Stat.MoveSpeed = originalSpeed;
+    }
     protected virtual void Init()
     {
         Stat = GetComponent<Stat>();
@@ -59,6 +72,7 @@ public class MonsterController : CreatureController
                 Stat.MoveSpeed = Managers.Data.MonsterData[24];
                 Stat.AttackSpeed = Managers.Data.MonsterData[25];
                 Stat.AttackRange = Managers.Data.MonsterData[26];
+                coin = Managers.Data.MonsterData[27];
                 break;
             case Define.MonsterType.Fast:
                 Stat.Hp = Managers.Data.MonsterData[29];
@@ -77,7 +91,7 @@ public class MonsterController : CreatureController
                 coin = Managers.Data.MonsterData[41];
                 break;
         }
-
+        originalSpeed = Stat.MoveSpeed;
     }
     protected virtual void UpdateController()
     {

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Define
 {
+    public enum BulletType
+    {
+
+    }
     public enum TurretType
     {
         Squirrel,

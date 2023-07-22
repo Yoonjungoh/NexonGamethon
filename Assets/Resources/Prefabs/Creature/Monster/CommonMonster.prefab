@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2763956567726042032}
   - component: {fileID: -140704235100193192}
   - component: {fileID: -7940303082850048930}
+  - component: {fileID: 5417675395687013859}
   m_Layer: 6
   m_Name: CommonMonster
   m_TagString: Monster
@@ -171,3 +172,14 @@ MonoBehaviour:
   AttackSpeed: 0
   AttackRange: 0
   Cost: 0
+--- !u!210 &5417675395687013859
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763956567726042039}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10

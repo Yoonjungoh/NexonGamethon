@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2763956567726042032}
   - component: {fileID: 4100639283497001704}
   - component: {fileID: -5172002606405620380}
+  - component: {fileID: 852603280424079755}
   m_Layer: 6
   m_Name: BombMonster
   m_TagString: Monster
@@ -171,3 +172,14 @@ MonoBehaviour:
   AttackSpeed: 0
   AttackRange: 0
   Cost: 0
+--- !u!210 &852603280424079755
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763956567726042039}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10

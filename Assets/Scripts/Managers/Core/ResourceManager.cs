@@ -122,6 +122,18 @@ public class ResourceManager
         go.name = original.name;
         return go;
     }
+    public GameObject Instantiate(GameObject g, Transform parent = null)
+    {
+        if (g == null)
+        {
+            Debug.Log($"Failed to instantiate prefab : {g.name}");
+            return null;
+        }
+
+        GameObject go = Object.Instantiate(g, parent);
+        go.name = g.name;
+        return go;
+    }
 
     public void Destroy(GameObject go, float time = 0.0f)
     {

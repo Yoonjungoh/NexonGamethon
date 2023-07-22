@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,13 +15,37 @@ public class UI_Turret : UI_Scene
         SquirrelTurretButton,
         DeerTurretButton,
         OwlTurretButton
+    };
+    enum Texts
+    {
+        SquirrelCostText,
+        DeerCostText,
+        OwlCostText
     }
     void Start()
     {
+        //// 터렛 코스트 초기화
+        //Managers.Game.SquirrelCost = new float[] { Managers.Data.TurretData[13], Managers.Data.TurretData[14], Managers.Data.TurretData[15] };
+        //Managers.Game.OwlCost = new float[] { Managers.Data.TurretData[21], Managers.Data.TurretData[22], Managers.Data.TurretData[23] };
+        //Managers.Game.DeerCost = new float[] { Managers.Data.TurretData[29], Managers.Data.TurretData[30], Managers.Data.TurretData[31] };
+        //Managers.Game.BearCost = new float[] { Managers.Data.TurretData[37], Managers.Data.TurretData[38], Managers.Data.TurretData[39] };
+        // 터렛 코스트 초기화
+        Managers.Game.SquirrelCost = new float[] { 1,1,1 };
+        Managers.Game.OwlCost = new float[] { 1, 1, 1 };
+        Managers.Game.DeerCost = new float[] { 1,1,1 };
+        Managers.Game.BearCost = new float[] { 1, 1, 1 };
+
         Bind<Button>(typeof(Buttons));
+        Bind<TextMeshProUGUI>(typeof(Texts));
+
         GetButton((int)Buttons.SquirrelTurretButton).onClick.AddListener(() => BuyTurret("SquirrelTurretImage"));
         GetButton((int)Buttons.DeerTurretButton).onClick.AddListener(() => BuyTurret("DeerTurretImage"));
         GetButton((int)Buttons.OwlTurretButton).onClick.AddListener(() => BuyTurret("OwlTurretImage"));
+
+        GetTextMeshProUGUI((int)Texts.SquirrelCostText).text = $"{Managers.Game.SquirrelCost[Managers.Game.SquirrelTurretLevel - 1]} 크리스탈";
+        GetTextMeshProUGUI((int)Texts.DeerCostText).text = $"{Managers.Game.DeerCost[Managers.Game.DeerTurretLevel - 1]} 크리스탈";
+        GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"{Managers.Game.OwlCost[Managers.Game.OwlTurretLevel - 1]} 크리스탈";
+
         GameObject[] gos = GameObject.FindGameObjectsWithTag("SpawnPoint");
         spawnPoints = new SpawnPoint[gos.Length]; 
         for (int i = 0; i < gos.Length; i++)
