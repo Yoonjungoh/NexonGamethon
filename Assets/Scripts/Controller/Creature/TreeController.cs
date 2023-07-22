@@ -11,7 +11,7 @@ public class TreeController : CreatureController
     void Start()
     {
         Stat = new Stat(Managers.Data.TreeData[7], Managers.Data.TreeData[8], Managers.Data.TreeData[9], Managers.Data.TreeData[10], Managers.Data.TreeData[11]);
-        Stat.Hp += perIncreaseHp * (Managers.Game.TreeHpLevel - 1);
+        Stat.Hp += perIncreaseHp * (Managers.Game.treeLevel);
         maxHp = Stat.Hp;
         // 디폴트 State Idle로 바꿈
         State = Define.CreatureState.Idle;
