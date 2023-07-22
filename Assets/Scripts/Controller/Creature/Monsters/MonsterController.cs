@@ -146,6 +146,8 @@ public class MonsterController : CreatureController
     public override void OnDead()
     {
         Managers.Game.monsters.Remove(this);
+        if (Managers.Game.monsters.Count == 0)
+            Managers.UI.ShowPopupUI<UI_ClearPopup>();
         Managers.Game.Crystal += (int)coin;
         base.OnDead();
     }

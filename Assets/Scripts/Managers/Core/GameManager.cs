@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager
 {
     public int Id = 100;
-    public int Crystal = 10;
+    public int Crystal = 100;
     public bool LoadCompleted = false;
     public List<BranchController> InGameBranches = new List<BranchController>();
     public List<MonsterController> monsters = new List<MonsterController>();

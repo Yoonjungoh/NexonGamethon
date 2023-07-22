@@ -5,13 +5,13 @@ using UnityEngine;
 public class TreeController : CreatureController
 {
     UI_Turret turretUI;
+    public float maxHp;
     void Start()
     {
-        //Stat = new Stat(Managers.Data.TreeData[5], Managers.Data.TreeData[6], Managers.Data.TreeData[7], Managers.Data.TreeData[8], Managers.Data.TreeData[9]);
-        Stat = new Stat(500, 500, 500, 500, 500);
+        Stat = new Stat(Managers.Data.TreeData[7], Managers.Data.TreeData[8], Managers.Data.TreeData[9], Managers.Data.TreeData[10], Managers.Data.TreeData[11]);
+        maxHp = Managers.Data.TreeData[7];
         // 디폴트 State Idle로 바꿈
         State = Define.CreatureState.Idle;
-
     }
     public void InitUI()
     {

@@ -15,7 +15,7 @@ public class UI_Turret : UI_Scene
         SquirrelTurretButton,
         DeerTurretButton,
         OwlTurretButton
-    };
+    }
     enum Texts
     {
         SquirrelCostText,
@@ -24,16 +24,16 @@ public class UI_Turret : UI_Scene
     }
     void Start()
     {
-        //// 터렛 코스트 초기화
-        //Managers.Game.SquirrelCost = new float[] { Managers.Data.TurretData[13], Managers.Data.TurretData[14], Managers.Data.TurretData[15] };
-        //Managers.Game.OwlCost = new float[] { Managers.Data.TurretData[21], Managers.Data.TurretData[22], Managers.Data.TurretData[23] };
-        //Managers.Game.DeerCost = new float[] { Managers.Data.TurretData[29], Managers.Data.TurretData[30], Managers.Data.TurretData[31] };
-        //Managers.Game.BearCost = new float[] { Managers.Data.TurretData[37], Managers.Data.TurretData[38], Managers.Data.TurretData[39] };
         // 터렛 코스트 초기화
-        Managers.Game.SquirrelCost = new float[] { 1,1,1 };
-        Managers.Game.OwlCost = new float[] { 1, 1, 1 };
-        Managers.Game.DeerCost = new float[] { 1,1,1 };
-        Managers.Game.BearCost = new float[] { 1, 1, 1 };
+        Managers.Game.SquirrelCost = new float[] { Managers.Data.TurretData[13], Managers.Data.TurretData[14], Managers.Data.TurretData[15] };
+        Managers.Game.OwlCost = new float[] { Managers.Data.TurretData[21], Managers.Data.TurretData[22], Managers.Data.TurretData[23] };
+        Managers.Game.DeerCost = new float[] { Managers.Data.TurretData[29], Managers.Data.TurretData[30], Managers.Data.TurretData[31] };
+        Managers.Game.BearCost = new float[] { Managers.Data.TurretData[37], Managers.Data.TurretData[38], Managers.Data.TurretData[39] };
+        // TODO - 터렛 코스트 초기화
+        //Managers.Game.SquirrelCost = new float[] { 1, 1, 1 };
+        //Managers.Game.OwlCost = new float[] { 1, 1, 1 };
+        //Managers.Game.DeerCost = new float[] { 1, 1, 1 };
+        //Managers.Game.BearCost = new float[] { 1, 1, 1 };
 
         Bind<Button>(typeof(Buttons));
         Bind<TextMeshProUGUI>(typeof(Texts));

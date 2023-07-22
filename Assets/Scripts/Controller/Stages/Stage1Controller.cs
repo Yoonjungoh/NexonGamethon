@@ -19,7 +19,7 @@ public class Stage1Controller : MonoBehaviour
         crystalTimer += Time.deltaTime;
         if (crystalTimer >= 1f)
         {
-            Managers.Game.Crystal += 2;
+            Managers.Game.Crystal += 1;
             crystalTimer = 0f;
         }
         if (Timer >= 2f && waves[0] == false)
