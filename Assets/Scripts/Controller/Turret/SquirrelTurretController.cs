@@ -7,6 +7,7 @@ public class SquirrelTurretController : TurretController
     protected override void Init()
     {
         type = Define.TurretType.Squirrel;
+        level = Managers.Game.SquirrelTurretLevel;
         base.Init();
     }
     protected override void Fire(MonsterController monster)

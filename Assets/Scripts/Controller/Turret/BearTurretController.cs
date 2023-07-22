@@ -7,6 +7,7 @@ public class BearTurretController : TurretController
     protected override void Init()
     {
         type = Define.TurretType.Bear;
+        level = Managers.Game.BearTurretLevel;
         base.Init();
     }
     protected override void Fire(MonsterController monster)

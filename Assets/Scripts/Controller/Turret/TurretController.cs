@@ -10,7 +10,8 @@ public class TurretController : MonoBehaviour
     public Stat Stat;
     protected float fireTimer = 0f;
     protected float fireDelay = 1f;
-    protected float[] cost = new float[3];
+    public float[] cost = new float[3];
+    public int level = 1;
     public float bulletSpeed = 30;
     protected GameObject[] bulletPoints;
 
