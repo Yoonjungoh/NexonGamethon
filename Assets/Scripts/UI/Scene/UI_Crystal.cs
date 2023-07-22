@@ -17,6 +17,6 @@ public class UI_Crystal : UI_Scene
     }
     void Update()
     {
-        crystalText.text = $"Å©¸®½ºÅ»: {Managers.Game.Crystal}";
+        crystalText.text = $"{Managers.Game.Crystal}";
     }
 }
