@@ -7,6 +7,7 @@ public class Stage1Controller : MonoBehaviour
     public float Timer = 0f;
     bool[] waves = new bool[4];
     MonsterSpawnerController msc;
+    float crystalTimer = 0f;
     void Start()
     {
         msc = GetComponent<MonsterSpawnerController>();
@@ -15,6 +16,12 @@ public class Stage1Controller : MonoBehaviour
     void Update()
     {
         Timer += Time.deltaTime;
+        crystalTimer += Time.deltaTime;
+        if (crystalTimer >= 1f)
+        {
+            Managers.Game.Crystal += 2;
+            crystalTimer = 0f;
+        }
         if (Timer >= 2f && waves[0] == false)
         {
             waves[0] = true;

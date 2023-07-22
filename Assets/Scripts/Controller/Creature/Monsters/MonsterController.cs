@@ -9,6 +9,7 @@ public class MonsterController : CreatureController
     public Define.MonsterType type;
     public Define.MoveDir moveDir;
     public float MovingDelay = 100f;
+    public float coin;
     protected virtual void Init()
     {
         Stat = GetComponent<Stat>();
@@ -42,6 +43,7 @@ public class MonsterController : CreatureController
                 Stat.MoveSpeed = Managers.Data.MonsterData[10];
                 Stat.AttackSpeed = Managers.Data.MonsterData[11];
                 Stat.AttackRange = Managers.Data.MonsterData[12];
+                coin = Managers.Data.MonsterData[13];
                 break;
             case Define.MonsterType.Fire:
                 Stat.Hp = Managers.Data.MonsterData[15];
@@ -49,6 +51,7 @@ public class MonsterController : CreatureController
                 Stat.MoveSpeed = Managers.Data.MonsterData[17];
                 Stat.AttackSpeed = Managers.Data.MonsterData[18];
                 Stat.AttackRange = Managers.Data.MonsterData[19];
+                coin = Managers.Data.MonsterData[20];
                 break;
             case Define.MonsterType.Tank:
                 Stat.Hp = Managers.Data.MonsterData[22];
@@ -63,6 +66,7 @@ public class MonsterController : CreatureController
                 Stat.MoveSpeed = Managers.Data.MonsterData[31];
                 Stat.AttackSpeed = Managers.Data.MonsterData[32];
                 Stat.AttackRange = Managers.Data.MonsterData[33];
+                coin = Managers.Data.MonsterData[34];
                 break;
             case Define.MonsterType.Bomb:
                 Stat.Hp = Managers.Data.MonsterData[36];
@@ -70,6 +74,7 @@ public class MonsterController : CreatureController
                 Stat.MoveSpeed = Managers.Data.MonsterData[38];
                 Stat.AttackSpeed = Managers.Data.MonsterData[39];
                 Stat.AttackRange = Managers.Data.MonsterData[40];
+                coin = Managers.Data.MonsterData[41];
                 break;
         }
 
@@ -127,6 +132,7 @@ public class MonsterController : CreatureController
     public override void OnDead()
     {
         Managers.Game.monsters.Remove(this);
+        Managers.Game.Crystal += (int)coin;
         base.OnDead();
     }
     private void OnCollisionEnter2D(Collision2D collision)
