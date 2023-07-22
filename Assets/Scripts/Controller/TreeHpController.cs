@@ -8,6 +8,7 @@ public class TreeHpController : MonoBehaviour
 {
     Slider hpSlider;
     TreeController tree;
+    float speed = 3f;
     void Start()
     {
         hpSlider = GetComponent<Slider>();
@@ -17,6 +18,6 @@ public class TreeHpController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hpSlider.value = tree.Stat.Hp / tree.maxHp;
+        hpSlider.value = Mathf.Lerp(hpSlider.value, tree.Stat.Hp / tree.maxHp, Time.deltaTime * speed) ;
     }
 }
