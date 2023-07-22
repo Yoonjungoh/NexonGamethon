@@ -204,11 +204,13 @@ public class MonsterController : CreatureController
     // TODO
     protected IEnumerator CoBombAttack()
     {
-        _target.OnDamaged(Stat.Attack);
-        // TODO - 애니메이션 트리거 사용
-        //_animator.Play($"{type}_ATTACK");
-        Managers.Resource.Destroy(gameObject);
+        _animator.Play("BOMB_ATTACK");
         yield return null;
+    }
+    protected void BombSuicide()
+    {
+        _target.OnDamaged(Stat.Attack);
+        Managers.Resource.Destroy(gameObject);
     }
     protected IEnumerator CoFireAttack()
     {

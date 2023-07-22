@@ -25,7 +25,8 @@ public class Stage1Controller : MonoBehaviour
         if (Timer >= 2f && waves[0] == false)
         {
             waves[0] = true;
-            msc.SpawnMonster("CommonMonster", 15, 3f, Define.MoveDir.Left);
+            msc.SpawnMonster("BombMonster", 15, 3f, Define.MoveDir.Left);
+            //msc.SpawnMonster("CommonMonster", 15, 3f, Define.MoveDir.Left);
         }
         if (Timer >= 11.3f && waves[1] == false)
         {
