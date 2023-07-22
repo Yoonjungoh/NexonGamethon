@@ -6,13 +6,17 @@ public class MonsterController : CreatureController
 {
     protected Rigidbody2D rigid;
     protected TreeController _target;
+    protected Animator _animator;
     public Define.MonsterType type;
     public Define.MoveDir moveDir;
+    public GameObject bulletPoint;
+    GameObject icicle;
     public float MovingDelay = 100f;
     public float coin;
     public float originalSpeed;
     public float debuffTime = 3f;
     public float debuffMoveSpeed = 0.3f;
+    public float bulletSpeed = 10f;
     public void DebuffMoveSpeed()
     {
         StartCoroutine(CoDebuffMoveSpeed());
@@ -26,7 +30,8 @@ public class MonsterController : CreatureController
     protected virtual void Init()
     {
         Stat = GetComponent<Stat>();
-
+        _animator = GetComponent<Animator>();
+        icicle = Managers.Resource.Load<GameObject>("Creature/Icicle");
         InitStat();
 
         rigid = GetComponent<Rigidbody2D>();
@@ -45,6 +50,8 @@ public class MonsterController : CreatureController
             moveDir = Define.MoveDir.Left;
             transform.localScale = new Vector3(1, 1, 0);
         }
+        if (transform.childCount == 1)
+            bulletPoint = transform.GetChild(0).gameObject;
     }
     protected void InitStat()
     {
@@ -128,8 +135,18 @@ public class MonsterController : CreatureController
             State = Define.CreatureState.Moving;
         }
     }
+    bool isDetect = false;
     protected virtual void FollowTree()
     {
+        if (type == Define.MonsterType.Fire && isDetect == false)
+        {
+            float distance = Mathf.Abs(_target.transform.position.x - transform.position.x);
+            if (distance <= Stat.AttackRange)
+            {
+                isDetect = true;
+                StartCoroutine(CoFireAttack());
+            }
+        }
         float speed;
         if (moveDir == Define.MoveDir.Right)
         {
@@ -151,12 +168,59 @@ public class MonsterController : CreatureController
         Managers.Game.Crystal += (int)coin;
         base.OnDead();
     }
+    protected IEnumerator CoCommonAttack()
+    {
+        _target.OnDamaged(Stat.Attack);
+        //_animator.Play($"{type}_ATTACK");
+        yield return new WaitForSeconds(Stat.AttackSpeed);
+        StartCoroutine(CoCommonAttack());
+    }
+    // TODO
+    protected IEnumerator CoBombAttack()
+    {
+        _target.OnDamaged(Stat.Attack);
+        // TODO - 애니메이션 트리거 사용
+        //_animator.Play($"{type}_ATTACK");
+        Managers.Resource.Destroy(gameObject);
+        yield return null;
+    }
+    protected IEnumerator CoFireAttack()
+    {
+        Fire();
+        yield return new WaitForSeconds(Stat.AttackSpeed);
+        StartCoroutine(CoFireAttack());
+    }
+    protected void Fire()
+    {
+        //_animator.Play($"{type}_ATTACK");
+        IcicleController ic = Managers.Resource.Instantiate(icicle).GetComponent<IcicleController>();
+        ic.transform.position = bulletPoint.transform.position;
+        ic.bulletSpeed = bulletSpeed;
+        ic.bulletAttack = Stat.Attack;
+        ic.dir = moveDir;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Tree")
         {
             State = Define.CreatureState.Skill;
-            _target.OnDamaged(Stat.Attack);
+            switch (type)
+            {
+                case Define.MonsterType.Common:
+                    StartCoroutine(CoCommonAttack());
+                    break;
+                case Define.MonsterType.Fast:
+                    StartCoroutine(CoCommonAttack());
+                    break;
+                case Define.MonsterType.Tank:
+                    StartCoroutine(CoCommonAttack());
+                    break;
+                case Define.MonsterType.Bomb:
+                    StartCoroutine(CoBombAttack());
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
