@@ -11,6 +11,7 @@ public class GameManager
     public List<MonsterController> monsters = new List<MonsterController>();
     public int CurrentStage = 1;
     public SpawnPoint[] SpawnPoints;
+
     // 터렛 강화 정보
     public int SquirrelTurretLevel = 1;
     public int OwlTurretLevel = 1;
@@ -20,4 +21,10 @@ public class GameManager
     public float[] OwlCost;
     public float[] DeerCost;
     public float[] BearCost;
+
+    // 나무 강화 정보
+    public int TreeHpLevel = 1;
+
+    // 필살기 강화 정보
+    public int UltimateSkillLevel = 1;
 }

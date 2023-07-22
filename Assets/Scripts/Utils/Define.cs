@@ -22,6 +22,7 @@ public class Define
         Tank,
         Fire,
         Bomb,
+        Elite,
     }
     public enum MoveDir
     {

@@ -17,6 +17,7 @@ public class MonsterController : CreatureController
     public float debuffTime = 3f;
     public float debuffMoveSpeed = 0.3f;
     public float bulletSpeed = 10f;
+    public Vector2 originLocalscale;
     public void DebuffMoveSpeed()
     {
         StartCoroutine(CoDebuffMoveSpeed());
@@ -29,6 +30,7 @@ public class MonsterController : CreatureController
     }
     protected virtual void Init()
     {
+        originLocalscale = new Vector2(transform.localScale.x, transform.localScale.y);
         Stat = GetComponent<Stat>();
         _animator = GetComponent<Animator>();
         icicle = Managers.Resource.Load<GameObject>("Creature/Icicle");
@@ -43,12 +45,12 @@ public class MonsterController : CreatureController
         if (dir > 0)
         {
             moveDir = Define.MoveDir.Right;
-            transform.localScale = new Vector3(-1, 1, 0);
+            transform.localScale = new Vector3(-originLocalscale.x, originLocalscale.y, 0);
         }
         else
         {
             moveDir = Define.MoveDir.Left;
-            transform.localScale = new Vector3(1, 1, 0);
+            transform.localScale = new Vector3(originLocalscale.x, originLocalscale.y, 0);
         }
         if (transform.childCount == 1)
             bulletPoint = transform.GetChild(0).gameObject;
@@ -96,6 +98,14 @@ public class MonsterController : CreatureController
                 Stat.AttackSpeed = Managers.Data.MonsterData[39];
                 Stat.AttackRange = Managers.Data.MonsterData[40];
                 coin = Managers.Data.MonsterData[41];
+                break;
+            case Define.MonsterType.Elite:
+                Stat.Hp = Managers.Data.MonsterData[43];
+                Stat.Attack = Managers.Data.MonsterData[44];
+                Stat.MoveSpeed = Managers.Data.MonsterData[45];
+                Stat.AttackSpeed = Managers.Data.MonsterData[46];
+                Stat.AttackRange = Managers.Data.MonsterData[47];
+                coin = Managers.Data.MonsterData[48];
                 break;
         }
         originalSpeed = Stat.MoveSpeed;
@@ -184,6 +194,9 @@ public class MonsterController : CreatureController
             case Define.MonsterType.Tank:
                 //_animator.Play("TANK_ATTACK");
                 break;
+            case Define.MonsterType.Elite:
+                //_animator.Play("TANK_ATTACK");
+                break;
         }
         yield return new WaitForSeconds(Stat.AttackSpeed);
         StartCoroutine(CoCommonAttack());
@@ -229,6 +242,9 @@ public class MonsterController : CreatureController
                     break;
                 case Define.MonsterType.Bomb:
                     StartCoroutine(CoBombAttack());
+                    break;
+                case Define.MonsterType.Elite:
+                    StartCoroutine(CoCommonAttack());
                     break;
                 default:
                     break;

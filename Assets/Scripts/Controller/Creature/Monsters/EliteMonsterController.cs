@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EliteMonsterController : MonoBehaviour
+public class EliteMonsterController : MonsterController
 {
-    // Start is called before the first frame update
+    protected override void Init()
+    {
+        type = Define.MonsterType.Elite;
+        base.Init();
+    }
     void Start()
     {
-        
+        Init();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        base.UpdateController();
     }
 }

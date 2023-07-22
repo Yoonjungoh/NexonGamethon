@@ -15,6 +15,7 @@ public class TurretController : MonoBehaviour
     public float bulletSpeed = 30;
     protected List<GameObject> bulletPoints = new List<GameObject>();
     protected GameObject bullet;
+    protected float perIncreaseAttack;
     protected virtual void Init()
     {
         animator = GetComponent<Animator>();
@@ -104,7 +105,9 @@ public class TurretController : MonoBehaviour
         switch (type)
         {
             case Define.TurretType.Squirrel:
+                perIncreaseAttack = 1;
                 Stat.Attack = Managers.Data.TurretData[9];
+                Stat.Attack += perIncreaseAttack * (Managers.Game.SquirrelTurretLevel - 1);
                 Stat.AttackSpeed = Managers.Data.TurretData[10];
                 Stat.AttackRange = Managers.Data.TurretData[11];
                 cost[0] = Managers.Data.TurretData[13];
@@ -112,7 +115,9 @@ public class TurretController : MonoBehaviour
                 cost[2] = Managers.Data.TurretData[15];
                 break;
             case Define.TurretType.Owl:
+                perIncreaseAttack = 40;
                 Stat.Attack = Managers.Data.TurretData[17];
+                Stat.Attack += perIncreaseAttack * (Managers.Game.OwlTurretLevel - 1);
                 Stat.AttackSpeed = Managers.Data.TurretData[18];
                 Stat.AttackRange = Managers.Data.TurretData[19];
                 cost[0] = Managers.Data.TurretData[21];
@@ -120,7 +125,9 @@ public class TurretController : MonoBehaviour
                 cost[2] = Managers.Data.TurretData[23];
                 break;
             case Define.TurretType.Deer:
+                perIncreaseAttack = 10;
                 Stat.Attack = Managers.Data.TurretData[25];
+                Stat.Attack += perIncreaseAttack * (Managers.Game.DeerTurretLevel - 1);
                 Stat.AttackSpeed = Managers.Data.TurretData[26];
                 Stat.AttackRange = Managers.Data.TurretData[27];
                 cost[0] = Managers.Data.TurretData[29];
@@ -128,7 +135,9 @@ public class TurretController : MonoBehaviour
                 cost[2] = Managers.Data.TurretData[31];
                 break;
             case Define.TurretType.Bear:
+                perIncreaseAttack = 15;
                 Stat.Attack = Managers.Data.TurretData[33];
+                Stat.Attack += perIncreaseAttack * (Managers.Game.BearTurretLevel - 1);
                 Stat.AttackSpeed = Managers.Data.TurretData[34];
                 Stat.AttackRange = Managers.Data.TurretData[35];
                 cost[0] = Managers.Data.TurretData[37];
