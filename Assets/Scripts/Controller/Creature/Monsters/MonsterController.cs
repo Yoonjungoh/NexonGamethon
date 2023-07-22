@@ -144,6 +144,8 @@ public class MonsterController : CreatureController
             if (distance <= Stat.AttackRange)
             {
                 isDetect = true;
+                State = Define.CreatureState.Skill;
+                rigid.bodyType = RigidbodyType2D.Static;
                 StartCoroutine(CoFireAttack());
             }
         }

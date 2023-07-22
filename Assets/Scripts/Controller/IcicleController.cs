@@ -27,7 +27,7 @@ public class IcicleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigid.AddForce(new Vector2(dirVector * bulletSpeed * Time.deltaTime, 0f));
+        rigid.velocity = new Vector2(dirVector * bulletSpeed, 0);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
