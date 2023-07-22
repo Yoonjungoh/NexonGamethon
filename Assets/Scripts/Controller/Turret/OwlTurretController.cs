@@ -7,7 +7,7 @@ public class OwlTurretController : TurretController
     protected override void Init()
     {
         type = Define.TurretType.Owl;
-        level = Managers.Game.OwlTurretLevel;
+        level = Managers.Game.turret_Lv[1];
         base.Init();
     }
     protected override void Fire(MonsterController monster)

@@ -38,6 +38,8 @@ public class TurretController : MonoBehaviour
             bulletPoints.Add(transform.GetChild(0).gameObject);
             bulletPoints.Add(transform.GetChild(1).gameObject);
             bulletPoints.Add(transform.GetChild(2).gameObject);
+            bulletPoints.Add(transform.GetChild(3).gameObject);
+            bulletPoints.Add(transform.GetChild(4).gameObject);
         }
     }
     protected virtual void UpdateController()
@@ -80,9 +82,9 @@ public class TurretController : MonoBehaviour
     }
     protected virtual void Fire(MonsterController monster)
     {
-        BulletController bc = Managers.Resource.Instantiate(bullet).GetComponent<BulletController>();
         if (type != Define.TurretType.Bear)
         {
+            BulletController bc = Managers.Resource.Instantiate(bullet).GetComponent<BulletController>();
             bc.transform.position = bulletPoints[0].transform.position;
             bc.target = monster;
             bc.targetPosition = monster.transform.position;
@@ -97,7 +99,42 @@ public class TurretController : MonoBehaviour
         // 곰 일 때 산탄 처리
         else
         {
+            BulletController bc = Managers.Resource.Instantiate(bullet).GetComponent<BulletController>();
+            bc.transform.position = bulletPoints[0].transform.position;
+            bc.target = monster;
+            bc.targetPosition = monster.transform.position;
+            bc.Owner = this;
+            bc.bulletSpeed = bulletSpeed;
+            // 방향 처리
+            Vector3 direction = monster.transform.position - transform.position;
+            direction.z = 0f;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            bc.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
 
+            for (int i = 1; i < 5; i++)
+            {
+                float value = 0f;
+                if (i == 1)
+                    value = 10;
+                else if (i == 2)
+                    value = -10;
+                else if (i == 3)
+                    value = 20;
+                else if (i == 4)
+                    value = -20;
+                // angle 값을 라디안으로 변환
+                float radians = (angle + value) * Mathf.Deg2Rad;
+                // direction 벡터를 계산
+                Vector2 dir = new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
+                BulletController b = Managers.Resource.Instantiate(bullet).GetComponent<BulletController>();
+                b.transform.position = bulletPoints[0].transform.position;
+                b.Owner = this;
+                b.bulletSpeed = bulletSpeed;
+                b.direction = dir;
+                b.targetPosition = Vector3.zero;
+                // 방향 처리
+                b.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + value - 90f));
+            }
         }
     }
     protected void InitStat()
@@ -107,7 +144,7 @@ public class TurretController : MonoBehaviour
             case Define.TurretType.Squirrel:
                 perIncreaseAttack = 1;
                 Stat.Attack = Managers.Data.TurretData[9];
-                Stat.Attack += perIncreaseAttack * (Managers.Game.SquirrelTurretLevel - 1);
+                Stat.Attack += perIncreaseAttack * (Managers.Game.turret_Lv[0] - 1);
                 Stat.AttackSpeed = Managers.Data.TurretData[10];
                 Stat.AttackRange = Managers.Data.TurretData[11];
                 cost[0] = Managers.Data.TurretData[13];
@@ -117,7 +154,7 @@ public class TurretController : MonoBehaviour
             case Define.TurretType.Owl:
                 perIncreaseAttack = 40;
                 Stat.Attack = Managers.Data.TurretData[17];
-                Stat.Attack += perIncreaseAttack * (Managers.Game.OwlTurretLevel - 1);
+                Stat.Attack += perIncreaseAttack * (Managers.Game.turret_Lv[1] - 1);
                 Stat.AttackSpeed = Managers.Data.TurretData[18];
                 Stat.AttackRange = Managers.Data.TurretData[19];
                 cost[0] = Managers.Data.TurretData[21];
@@ -127,7 +164,7 @@ public class TurretController : MonoBehaviour
             case Define.TurretType.Deer:
                 perIncreaseAttack = 10;
                 Stat.Attack = Managers.Data.TurretData[25];
-                Stat.Attack += perIncreaseAttack * (Managers.Game.DeerTurretLevel - 1);
+                Stat.Attack += perIncreaseAttack * (Managers.Game.turret_Lv[2] - 1);
                 Stat.AttackSpeed = Managers.Data.TurretData[26];
                 Stat.AttackRange = Managers.Data.TurretData[27];
                 cost[0] = Managers.Data.TurretData[29];
@@ -137,7 +174,7 @@ public class TurretController : MonoBehaviour
             case Define.TurretType.Bear:
                 perIncreaseAttack = 15;
                 Stat.Attack = Managers.Data.TurretData[33];
-                Stat.Attack += perIncreaseAttack * (Managers.Game.BearTurretLevel - 1);
+                Stat.Attack += perIncreaseAttack * (Managers.Game.turret_Lv[3] - 1);
                 Stat.AttackSpeed = Managers.Data.TurretData[34];
                 Stat.AttackRange = Managers.Data.TurretData[35];
                 cost[0] = Managers.Data.TurretData[37];

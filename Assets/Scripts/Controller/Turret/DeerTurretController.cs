@@ -7,7 +7,7 @@ public class DeerTurretController : TurretController
     protected override void Init()
     {
         type = Define.TurretType.Deer;
-        level = Managers.Game.DeerTurretLevel;
+        level = Managers.Game.turret_Lv[2];
         base.Init();
     }
     protected override void Fire(MonsterController monster)

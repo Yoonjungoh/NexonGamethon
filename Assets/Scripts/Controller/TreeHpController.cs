@@ -21,7 +21,7 @@ public class TreeHpController : MonoBehaviour
     void Update()
     {
         hpSlider.value = Mathf.Lerp(hpSlider.value, tree.Stat.Hp / tree.maxHp, Time.deltaTime * speed) ;
-        if (hpSlider.value <= 0f)
+        if (tree.State == Define.CreatureState.Dead)
         {
             fillArea.SetActive(false);
         }

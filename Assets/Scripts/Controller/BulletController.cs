@@ -9,14 +9,16 @@ public class BulletController : MonoBehaviour
     public Vector3 targetPosition = Vector3.zero;
     public MonsterController target;
     Rigidbody2D rigid;
-    Vector3 direction;
+    public Vector3 direction;
     public float disappearTime = 3f;
     public List<MonsterController> monsters = new List<MonsterController>();
     public bool isStop = false;
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-        direction = (targetPosition - transform.position).normalized;
+        if (targetPosition != Vector3.zero)
+            direction = (targetPosition - transform.position).normalized;
+
     }
     private void Update()
     {
@@ -25,7 +27,7 @@ public class BulletController : MonoBehaviour
             // 총알의 방향을 계산
             rigid.velocity = direction * bulletSpeed;
         }
-        if (targetPosition != Vector3.zero && isStop == false)
+        if (isStop == false)
             rigid.velocity = direction * bulletSpeed;
     }
     IEnumerator CoDestroyBullet()
