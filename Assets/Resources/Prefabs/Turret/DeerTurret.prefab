@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3176024731991139406}
   - component: {fileID: 3176024731991139405}
   - component: {fileID: 5245462015591841419}
-  - component: {fileID: 1396192347867261790}
+  - component: {fileID: 4194834579384632822}
+  - component: {fileID: -8825758904437748531}
   m_Layer: 0
   m_Name: DeerTurret
   m_TagString: Turret
@@ -30,7 +31,8 @@ Transform:
   m_LocalPosition: {x: -2.51, y: 5.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 599878629395902386}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -112,7 +114,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.33, y: 2.53}
   m_EdgeRadius: 0
---- !u!114 &1396192347867261790
+--- !u!95 &4194834579384632822
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3176024731991139404}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a39fa62e3c11bd64d801a72ab3442780, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8825758904437748531
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +143,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 3176024731991139404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 604fbdf1b54e9024dbc5e0a0f7baff3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fc9b6971f5d0354ea57e61cbe5ad209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Stat: {fileID: 0}
+  bulletSpeed: 30
+--- !u!1 &8440406433757832542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599878629395902386}
+  m_Layer: 0
+  m_Name: BulletPoint
+  m_TagString: BulletPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &599878629395902386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8440406433757832542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.01, y: -0.57, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3176024731991139406}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
