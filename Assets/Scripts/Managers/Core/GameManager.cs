@@ -9,4 +9,5 @@ public class GameManager
     public bool LoadCompleted = false;
     public List<BranchController> InGameBranches = new List<BranchController>();
     public List<MonsterController> monsters = new List<MonsterController>();
+    public int CurrentStage = 1;
 }

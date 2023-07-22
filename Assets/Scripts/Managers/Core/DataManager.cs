@@ -48,12 +48,12 @@ public class DataManager
             for (int j = 0; j < columnSize; j++)
             {
                 //Debug.Log(column[j]);
-                int value;
-                bool isInt = int.TryParse(column[j], out value);
+                float value;
+                bool isInt = float.TryParse(column[j], out value);
                 if (isInt)
                     datas.Add(value);
                 else
-                    datas.Add(-1);
+                    datas.Add(-100f);
             }
         }
     }

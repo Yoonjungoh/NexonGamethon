@@ -10,6 +10,8 @@ public class Define
     }
     public enum MonsterType
     {
+        Common,
+        Fast,
         Tank,
         Fire,
         Bomb,

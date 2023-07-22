@@ -10,7 +10,7 @@ public class StartScene : MonoBehaviour
     }
     public IEnumerator CoGoToGameScene()
     {
-        yield return new WaitForSeconds(2f);
-        Managers.Scene.LoadScene("Game");
+        yield return new WaitForSeconds(3f);
+        Managers.Scene.LoadScene("Stage1");
     }
 }
