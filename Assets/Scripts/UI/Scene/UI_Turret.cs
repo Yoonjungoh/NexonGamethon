@@ -45,10 +45,34 @@ public class UI_Turret : UI_Scene
         GetButton((int)Buttons.OwlTurretButton).onClick.AddListener(() => BuyTurret("OwlTurretImage"));
         GetButton((int)Buttons.BearTurretButton).onClick.AddListener(() => BuyTurret("BearTurretImage"));
 
-        GetTextMeshProUGUI((int)Texts.SquirrelCostText).text = $"{Managers.Game.SquirrelCost[Managers.Game.turret_Lv[0] - 1]}";
-        GetTextMeshProUGUI((int)Texts.DeerCostText).text = $"{Managers.Game.DeerCost[Managers.Game.turret_Lv[1] - 1]}";
-        GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"{Managers.Game.OwlCost[Managers.Game.turret_Lv[2] - 1]}";
-        GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"{Managers.Game.OwlCost[Managers.Game.turret_Lv[3] - 1]}";
+        if (Managers.Game.turret_Lv[0] == 0)
+        {
+            GetButton((int)Buttons.SquirrelTurretButton).interactable = false; 
+            GetTextMeshProUGUI((int)Texts.SquirrelCostText).text = $"X";
+        }
+        else
+            GetTextMeshProUGUI((int)Texts.SquirrelCostText).text = $"{Managers.Game.SquirrelCost[Managers.Game.turret_Lv[0] - 1]}";
+        if (Managers.Game.turret_Lv[1] == 0)
+        {
+            GetButton((int)Buttons.DeerTurretButton).interactable = false;
+            GetTextMeshProUGUI((int)Texts.DeerCostText).text = $"X";
+        }
+        else
+            GetTextMeshProUGUI((int)Texts.DeerCostText).text = $"{Managers.Game.DeerCost[Managers.Game.turret_Lv[1] - 1]}";
+        if (Managers.Game.turret_Lv[2] == 0)
+        {
+            GetButton((int)Buttons.OwlTurretButton).interactable = false;
+            GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"X";
+        }
+        else
+            GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"{Managers.Game.OwlCost[Managers.Game.turret_Lv[2] - 1]}";
+        if (Managers.Game.turret_Lv[3] == 0)
+        {
+            GetButton((int)Buttons.BearTurretButton).interactable = false;
+            GetTextMeshProUGUI((int)Texts.BearCostText).text = $"X";
+        }
+        else
+            GetTextMeshProUGUI((int)Texts.BearCostText).text = $"{Managers.Game.BearCost[Managers.Game.turret_Lv[3] - 1]}";
 
         GameObject[] gos = GameObject.FindGameObjectsWithTag("SpawnPoint");
         spawnPoints = new SpawnPoint[gos.Length]; 

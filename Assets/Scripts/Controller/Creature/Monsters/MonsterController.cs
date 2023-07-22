@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterController : CreatureController
 {
     protected Rigidbody2D rigid;
+    protected BoxCollider2D boxCollider;
     protected TreeController _target;
     protected Animator _animator;
     public Define.MonsterType type;
@@ -33,6 +34,7 @@ public class MonsterController : CreatureController
         originLocalscale = new Vector2(transform.localScale.x, transform.localScale.y);
         Stat = GetComponent<Stat>();
         _animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
         icicle = Managers.Resource.Load<GameObject>("Creature/Icicle");
         InitStat();
 
@@ -247,14 +249,11 @@ public class MonsterController : CreatureController
         yield return new WaitForSeconds(Stat.AttackSpeed);
         StartCoroutine(CoFireAttack());
     }
+    bool isSpecialAttack = false;
     protected IEnumerator CoEliteAttack()
     {
         State = Define.CreatureState.Skill;
-        int rand = Random.Range(1, 3);
-        if (rand == 1)
-            _animator.Play("ELITE_ATTACK1");
-        else if (rand == 2)
-            _animator.Play("ELITE_ATTACK2");
+        _animator.Play("ELITE_ATTACK1");
         yield return new WaitForSeconds(Stat.AttackSpeed);
         StartCoroutine(CoEliteAttack());
     }

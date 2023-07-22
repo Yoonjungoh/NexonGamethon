@@ -32,24 +32,24 @@ public class Stage1Controller : MonoBehaviour
         if (Timer >= 2f && waves1[0] == false)
         {
             waves1[0] = true;
-            //msc.SpawnMonster(Define.MonsterType.Common, 15, 3f, Define.MoveDir.Left);
-            msc.SpawnMonster("EliteMonster", Define.MoveDir.Left);
+            msc.SpawnMonster(Define.MonsterType.Common, 15, 3f, Define.MoveDir.Left);
+            //msc.SpawnMonster("EliteMonster", Define.MoveDir.Left);
         }
-        //if (Timer >= 11.3f && waves1[1] == false)
-        //{
-        //    waves1[1] = true;
-        //    msc.SpawnMonster("FireMonster", 12, 3f, Define.MoveDir.Left);
-        //}
-        //if (Timer >= 20f && waves1[2] == false)
-        //{
-        //    waves1[2] = true;
-        //    msc.SpawnMonster("CommonMonster", 8, 3f, Define.MoveDir.Right);
-        //}
-        //if (Timer >= 26.3f && waves1[3] == false)
-        //{
-        //    waves1[3] = true;
-        //    msc.SpawnMonster("CommonMonster", 6, 3f, Define.MoveDir.Right);
-        //}
+        if (Timer >= 11.3f && waves1[1] == false)
+        {
+            waves1[1] = true;
+            msc.SpawnMonster("FireMonster", 12, 3f, Define.MoveDir.Left);
+        }
+        if (Timer >= 20f && waves1[2] == false)
+        {
+            waves1[2] = true;
+            msc.SpawnMonster("CommonMonster", 8, 3f, Define.MoveDir.Right);
+        }
+        if (Timer >= 26.3f && waves1[3] == false)
+        {
+            waves1[3] = true;
+            msc.SpawnMonster("CommonMonster", 6, 3f, Define.MoveDir.Right);
+        }
     }
     void Stage2()
     {

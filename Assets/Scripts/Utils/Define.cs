@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Define
 {
+    public enum BranchType
+    {
+        L1,
+        L2,
+        R1,
+        R2,
+        None,
+    }
     public enum BulletType
     {
 

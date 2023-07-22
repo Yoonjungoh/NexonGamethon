@@ -26,11 +26,11 @@ public class GameManager
 
     // Outgame
     [Header("Turret")]
-    //public int[] turret_Lv = { 1, 0, 0, 0 };
-    public int[] turret_Lv = { 1, 1, 1, 1 };
-    public int[,] turretPrices = new int[4, 3] { { 10, 100, 140 }, { 20, 150, 210 }, { 25, 200, 280 }, { 40, 300, 420 } };
+    public int[] turret_Lv = { 1, 0, 0, 0 };
+    public int[,] turretPrices = new int[4, 3] { { 100, 140, 200 }, { 150, 210, 300 }, { 200, 280, 400 }, { 300, 420, 600 } };
     public int stageLevel = 4; //씬스테이지 넘버 (터렛해감에 사용)
     public int paidCoin = 0;
+
 
     [Header("Tree")]
     // 나무 강화 정보
