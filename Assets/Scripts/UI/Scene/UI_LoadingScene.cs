@@ -114,4 +114,9 @@ public class UI_LoadingScene : UI_Scene
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
+    private void Update()
+    {
+        if (GetComponent<Canvas>() != null)
+            GetComponent<Canvas>().sortingOrder = 1000;
+    }
 }

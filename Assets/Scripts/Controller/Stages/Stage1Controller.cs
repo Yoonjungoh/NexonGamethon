@@ -16,6 +16,7 @@ public class Stage1Controller : MonoBehaviour
     float crystalTimer = 0f;
     void Start()
     {
+        Time.timeScale = 1;
         Managers.Game.Gaming = true;
         msc = GetComponent<MonsterSpawnerController>();
         Managers.Game.KillCount = 0;
