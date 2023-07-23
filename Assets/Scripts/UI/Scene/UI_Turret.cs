@@ -31,11 +31,6 @@ public class UI_Turret : UI_Scene
         Managers.Game.OwlCost = new float[] { Managers.Data.TurretData[21], Managers.Data.TurretData[22], Managers.Data.TurretData[23] };
         Managers.Game.DeerCost = new float[] { Managers.Data.TurretData[29], Managers.Data.TurretData[30], Managers.Data.TurretData[31] };
         Managers.Game.BearCost = new float[] { Managers.Data.TurretData[37], Managers.Data.TurretData[38], Managers.Data.TurretData[39] };
-        // TODO - ≈Õ∑ø ƒ⁄Ω∫∆Æ √ ±‚»≠
-        //Managers.Game.SquirrelCost = new float[] { 1, 1, 1 };
-        //Managers.Game.OwlCost = new float[] { 1, 1, 1 };
-        //Managers.Game.DeerCost = new float[] { 1, 1, 1 };
-        //Managers.Game.BearCost = new float[] { 1, 1, 1 };
 
         Bind<Button>(typeof(Buttons));
         Bind<TextMeshProUGUI>(typeof(Texts));
@@ -52,20 +47,23 @@ public class UI_Turret : UI_Scene
         }
         else
             GetTextMeshProUGUI((int)Texts.SquirrelCostText).text = $"{Managers.Game.SquirrelCost[Managers.Game.turret_Lv[0] - 1]}";
+        
         if (Managers.Game.turret_Lv[1] == 0)
-        {
-            GetButton((int)Buttons.DeerTurretButton).interactable = false;
-            GetTextMeshProUGUI((int)Texts.DeerCostText).text = $"X";
-        }
-        else
-            GetTextMeshProUGUI((int)Texts.DeerCostText).text = $"{Managers.Game.DeerCost[Managers.Game.turret_Lv[1] - 1]}";
-        if (Managers.Game.turret_Lv[2] == 0)
         {
             GetButton((int)Buttons.OwlTurretButton).interactable = false;
             GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"X";
         }
         else
-            GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"{Managers.Game.OwlCost[Managers.Game.turret_Lv[2] - 1]}";
+            GetTextMeshProUGUI((int)Texts.OwlCostText).text = $"{Managers.Game.OwlCost[Managers.Game.turret_Lv[1] - 1]}";
+        
+        if (Managers.Game.turret_Lv[2] == 0)
+        {
+            GetButton((int)Buttons.DeerTurretButton).interactable = false;
+            GetTextMeshProUGUI((int)Texts.DeerCostText).text = $"X";
+        }
+        else
+            GetTextMeshProUGUI((int)Texts.DeerCostText).text = $"{Managers.Game.DeerCost[Managers.Game.turret_Lv[2] - 1]}";
+        
         if (Managers.Game.turret_Lv[3] == 0)
         {
             GetButton((int)Buttons.BearTurretButton).interactable = false;
@@ -79,6 +77,65 @@ public class UI_Turret : UI_Scene
         for (int i = 0; i < gos.Length; i++)
             spawnPoints[i] = new SpawnPoint(gos[i], false);
         Managers.Game.SpawnPoints = spawnPoints;
+        InitCards();
+    }
+    void InitCards()
+    {
+        // ¥Ÿ∂˜¡„
+        if (Managers.Game.turret_Lv[0] == 1)
+        {
+            GetButton((int)Buttons.SquirrelTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_S_0");
+        }
+        else if (Managers.Game.turret_Lv[0] == 2)
+        {
+            GetButton((int)Buttons.SquirrelTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_S_1");
+        }
+        else if (Managers.Game.turret_Lv[0] == 3)
+        {
+            GetButton((int)Buttons.SquirrelTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_S_2");
+        }
+
+        // ø√ª©πÃ
+        if (Managers.Game.turret_Lv[1] == 1)
+        {
+            GetButton((int)Buttons.OwlTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_O_0");
+        }
+        else if (Managers.Game.turret_Lv[1] == 2)
+        {
+            GetButton((int)Buttons.OwlTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_O_1");
+        }
+        else if (Managers.Game.turret_Lv[1] == 3)
+        {
+            GetButton((int)Buttons.OwlTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_O_2");
+        }
+
+        // ªÁΩø
+        if (Managers.Game.turret_Lv[2] == 1)
+        {
+            GetButton((int)Buttons.DeerTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_T_0");
+        }
+        else if (Managers.Game.turret_Lv[2] == 2)
+        {
+            GetButton((int)Buttons.DeerTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_T_1");
+        }
+        else if (Managers.Game.turret_Lv[2] == 3)
+        {
+            GetButton((int)Buttons.DeerTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_T_2");
+        }
+
+        // ∞ı
+        if (Managers.Game.turret_Lv[3] == 1)
+        {
+            GetButton((int)Buttons.BearTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_B_0");
+        }
+        else if (Managers.Game.turret_Lv[3] == 2)
+        {
+            GetButton((int)Buttons.BearTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_B_1");
+        }
+        else if (Managers.Game.turret_Lv[3] == 3)
+        {
+            GetButton((int)Buttons.BearTurretButton).image.sprite = Managers.Resource.Load<Sprite>("A_B_2");
+        }
     }
     void BuyTurret(string name)
     {
