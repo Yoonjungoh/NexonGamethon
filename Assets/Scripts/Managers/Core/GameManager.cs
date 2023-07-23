@@ -22,11 +22,11 @@ public class GameManager
 
     // 필살기 강화 정보
     public int UltimateSkillLevel = 1;
-    public int coin = 10000;
+    public int coin = 150;
 
     // Outgame
     [Header("Turret")]
-    public int[] turret_Lv = { 1, 1, 2, 3 };
+    public int[] turret_Lv = { 1, 0, 0, 0 };
     public int[,] turretPrices = new int[4, 3] { { 100, 140, 200 }, { 150, 210, 300 }, { 200, 280, 400 }, { 300, 420, 600 } };
     public int stageLevel = 4; //씬스테이지 넘버 (터렛해감에 사용)
     public int paidCoin = 0;
@@ -51,6 +51,7 @@ public class GameManager
     public int Wave3Count = 63;
     public int Wave4Count = 42;
     public int Wave5Count = 32;
+    public bool CanUseUltimateSkill = true;
     public void ClearStage()
     {
         Managers.UI.ShowPopupUI<UI_ClearPopup>();

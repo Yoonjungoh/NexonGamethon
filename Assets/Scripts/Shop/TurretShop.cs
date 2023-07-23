@@ -27,12 +27,20 @@ public class TurretShop : MonoBehaviour
 
     private void Awake()
     {
-        stageLevel = Managers.Game.stageLevel;
+        stageLevel = Managers.Game.CurrentStage;
 
+        Debug.Log(Managers.Game.turret_Lv[0]);
+
+        if (stageLevel <= 3)
+        {
+            Managers.Game.turret_Lv[stageLevel - 1] = 1;
+        }
         for (int i = 0; i < 4; i++)
         {
             int nowLevel = Managers.Game.turret_Lv[i];
-            Debug.Log("nowLevel " + i + " " + nowLevel);
+
+            
+
             if (nowLevel >= 3)
             {
                 turretLvTxt[i].text = "LV." + (nowLevel).ToString();
@@ -42,8 +50,7 @@ public class TurretShop : MonoBehaviour
             else
             {
                 turretLvTxt[i].text = (nowLevel).ToString();
-                Debug.Log(nowLevel);
-                Debug.Log(Managers.Game.turretPrices[i, nowLevel]);
+
                 turrentPriceTxt[i].text = Managers.Game.turretPrices[i, nowLevel].ToString();
                 levels[i].GetComponent<turretLevel>().SetFillAmount(nowLevel);
             }
@@ -56,8 +63,9 @@ public class TurretShop : MonoBehaviour
             {
                 lockPanel[i].SetActive(true);
                 turretLvTxt[i].text = "LV.0";
-                levels[i].GetComponent<turretLevel>().SetFillAmount(1);
+                levels[i].GetComponent<turretLevel>().SetFillAmount(0);
             }
+
         }
     }
 
@@ -110,8 +118,6 @@ public class TurretShop : MonoBehaviour
         {
             Managers.Game.turret_Lv[i] = 0;
         }
-
-
 
 
         //해금시스템

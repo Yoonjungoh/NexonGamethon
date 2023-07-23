@@ -24,6 +24,7 @@ public class UI_ClearPopup : UI_Popup
     void GoToShopScene()
     {
         Time.timeScale = 1;
+        Managers.Game.CanUseUltimateSkill = true;
         Managers.Scene.LoadScene("OutGame");
         gameObject.SetActive(true);
     }

@@ -215,7 +215,7 @@ public class MonsterController : CreatureController
                 _animator.Play("FAST_ATTACK");
                 break;
             case Define.MonsterType.Tank:
-                //_animator.Play("TANK_ATTACK");
+                _animator.Play("TANK_ATTACK");
                 break;
             case Define.MonsterType.Elite:
                 //_animator.Play("TANK_ATTACK");

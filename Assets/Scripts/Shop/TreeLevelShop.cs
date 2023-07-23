@@ -50,7 +50,7 @@ public class TreeLevelShop : MonoBehaviour
         shopUISystem.SetCoin(-Managers.Game.treePrices[Managers.Game.treeLevel]);
         //·¹º§ ¾÷
         Managers.Game.treeLevel += 1;
-
+        Managers.Game.UltimateSkillLevel += 1;
         Debug.Log("coin " + Managers.Game.coin);
         ClosePopup();
 
