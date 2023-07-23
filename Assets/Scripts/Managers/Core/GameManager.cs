@@ -35,13 +35,13 @@ public class GameManager
     [Header("Tree")]
     // 나무 강화 정보
     public int treeLevel = 0;
-    public int[] treePrices = { 10, 20 };
+    public int[] treePrices = { 300, 500 };
 
     [Header("Branch")]
     public bool[] branchL = { false, false };
     public bool[] branchR = { false, false };
-    public int[] branchLPrice = { 100, 200 };
-    public int[] branchRPrice = { 100, 200 };
+    public int[] branchLPrice = { 150, 200 };
+    public int[] branchRPrice = { 150, 200 };
 
     public int KillCount = 0;
 
