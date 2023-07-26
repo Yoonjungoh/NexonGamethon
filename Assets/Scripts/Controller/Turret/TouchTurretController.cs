@@ -11,21 +11,21 @@ public class TouchTurretController : MonoBehaviour
         string turretName = (gameObject.name).Substring(0, gameObject.name.Length - 5);
         TurretController tc = Managers.Resource.Load<GameObject>($"Turret/{turretName}").GetComponent<TurretController>();
         float cost = 0f;
-        if (turretName == "SquirrelTurret")
+        if (tc.type == Define.TurretType.Squirrel)
         {
-            cost = Managers.Game.SquirrelCost;
+            cost = Managers.Game.SquirrelCost[Managers.Game.turret_Lv[0] - 1];
         }
-        else if (turretName == "OwlTurret")
+        else if (tc.type == Define.TurretType.Owl)
         {
-            cost = Managers.Game.OwlCost;
+            cost = Managers.Game.OwlCost[Managers.Game.turret_Lv[1] - 1];
         }
-        else if (turretName == "DeerTurret")
+        else if (tc.type == Define.TurretType.Deer)
         {
-            cost = Managers.Game.DeerCost;
+            cost = Managers.Game.DeerCost[Managers.Game.turret_Lv[2] - 1];
         }
-        else if (turretName == "BearTurret")
+        else if (tc.type == Define.TurretType.Bear)
         {
-            cost = Managers.Game.BearCost;
+            cost = Managers.Game.BearCost[Managers.Game.turret_Lv[3] - 1];
         }
         if (Managers.Game.Crystal >= cost)
         {

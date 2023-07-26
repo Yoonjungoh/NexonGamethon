@@ -12,7 +12,7 @@ public class MonsterController : CreatureController
     public Define.MoveDir moveDir;
     public GameObject bulletPoint;
     GameObject icicle;
-    public float MovingDelay;
+    public float MovingDelay = 100f;
     public float coin;
     public float originalSpeed;
     public float debuffTime = 3f;
@@ -138,20 +138,20 @@ public class MonsterController : CreatureController
     {
 
     }
-    public float timer = 0f;
+    float timer = 0f;
     protected virtual void UpdateIdle()
     {
         timer += Time.deltaTime;
         if (timer > MovingDelay)
         {
             State = Define.CreatureState.Moving;
-            Debug.Log("√‚πﬂ: " + MovingDelay + "√ ");
+            MovingDelay = 100000f;
         }
     }
     bool isDetect = false;
     protected virtual void FollowTree()
     {
-        if (type == Define.MonsterType.Fire && isDetect == false && _target != null)
+        if (type == Define.MonsterType.Fire && isDetect == false)
         {
             float distance = Mathf.Abs(_target.transform.position.x - transform.position.x);
             if (distance <= Stat.AttackRange)
@@ -242,10 +242,6 @@ public class MonsterController : CreatureController
     protected void EliteAttack2()
     {
         _target.OnDamaged(Stat.Attack * 2f);
-    }
-    public override float OnDamaged(float damage)
-    {
-        return base.OnDamaged(damage);
     }
     protected IEnumerator CoFireAttack()
     {

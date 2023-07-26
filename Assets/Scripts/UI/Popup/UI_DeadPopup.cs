@@ -25,7 +25,6 @@ public class UI_DeadPopup : UI_Popup
 
     void GoToShopScene()
     {
-        Managers.Sound.Play("EffectSound/ButtonClickSound");
         Time.timeScale = 1;
         Managers.Game.CanUseUltimateSkill = true;
         Managers.Scene.LoadScene("OutGame");

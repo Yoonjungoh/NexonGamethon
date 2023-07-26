@@ -13,11 +13,11 @@ public class GameManager
     public int CurrentStage = 1;
     public SpawnPoint[] SpawnPoints;
 
-    // 터렛 코스트 정보
-    public float SquirrelCost = 10;
-    public float OwlCost = 20;
-    public float DeerCost = 25;
-    public float BearCost = 40;
+    // 터렛 강화 정보
+    public float[] SquirrelCost;
+    public float[] OwlCost;
+    public float[] DeerCost;
+    public float[] BearCost;
 
 
     // 필살기 강화 정보
@@ -46,11 +46,11 @@ public class GameManager
     public int KillCount = 0;
 
     public int[] WaveCounts;
-    public int Wave1Count = 35;
-    public int Wave2Count = 75;
-    public int Wave3Count = 61;
-    public int Wave4Count = 40;
-    public int Wave5Count = 30;
+    public int Wave1Count = 41;
+    public int Wave2Count = 78;
+    public int Wave3Count = 63;
+    public int Wave4Count = 42;
+    public int Wave5Count = 32;
     public bool CanUseUltimateSkill = true;
     public void ClearStage()
     {

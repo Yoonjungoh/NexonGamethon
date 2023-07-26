@@ -34,26 +34,22 @@ public class Stage1Controller : MonoBehaviour
         {
             waves1[0] = true;
             msc.SpawnMonster(Define.MonsterType.Common, 15, 3f, Define.MoveDir.Left);
-            Debug.Log("1차");
             //msc.SpawnMonster("EliteMonster", Define.MoveDir.Left);
         }
         if (Timer >= 11.3f && waves1[1] == false)
         {
             waves1[1] = true;
             msc.SpawnMonster("FireMonster", 12, 3f, Define.MoveDir.Left);
-            Debug.Log("2차");
         }
         if (Timer >= 20f && waves1[2] == false)
         {
             waves1[2] = true;
             msc.SpawnMonster("CommonMonster", 8, 3f, Define.MoveDir.Right);
-            Debug.Log("3차");
         }
         if (Timer >= 26.3f && waves1[3] == false)
         {
             waves1[3] = true;
-            msc.SpawnMonster(Define.MonsterType.Fire, 6, 3f, Define.MoveDir.Right);
-            Debug.Log("4차");
+            msc.SpawnMonster("CommonMonster", 6, 3f, Define.MoveDir.Right);
         }
     }
     void Stage2()
