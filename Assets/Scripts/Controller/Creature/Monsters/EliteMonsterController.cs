@@ -13,7 +13,11 @@ public class EliteMonsterController : MonsterController
     {
         Init();
     }
-
+    public override void OnDead()
+    {
+        Managers.UI.ShowPopupUI<UI_EndPopup>();
+        base.OnDead();
+    }
     void Update()
     {
         base.UpdateController();

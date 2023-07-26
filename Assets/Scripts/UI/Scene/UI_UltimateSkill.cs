@@ -20,6 +20,7 @@ public class UI_UltimateSkill : UI_Scene
 
     void ClickUseUltimateSkill()
     {
+        Managers.Sound.Play("EffectSound/ButtonClickSound");
         GameObject.Find("UltimateSkill").GetComponent<Animator>().Play("ULTIMATE_SKILL");
     }
     void UseUltimateSkill()

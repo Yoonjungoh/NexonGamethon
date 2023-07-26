@@ -390,7 +390,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 53ebe7d77adafb74fa3f9a365c89a4e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d7a801ef6557d94696f07664a4849b9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 247df2bd64a351146841ff5755f79dbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12ccf3277f498b54cbdbfdc57ea8e640, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2429,10 +2429,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3786,6 +3786,7 @@ GameObject:
   - component: {fileID: 1129586879}
   - component: {fileID: 1129586878}
   - component: {fileID: 1129586877}
+  - component: {fileID: 1129586880}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3859,6 +3860,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1129586880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129586876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702d746d0deac604ba1c3f2784f5a85c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1141963816
 GameObject:
   m_ObjectHideFlags: 0
@@ -6645,7 +6658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d26126f279d0de84983eff14e3fefdd3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e2d2fc561b6097b42a767df982efc30c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7315,7 +7328,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7a8989cd08c8ca14d9ad90f1d8aafd68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a01b4fb64860a44ab30d0a65ca3593d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 958505281019230073}
   - component: {fileID: 7366327545151822392}
   - component: {fileID: 7221967989139251305}
+  - component: {fileID: 5396778470432265212}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -217,3 +218,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+--- !u!114 &5396778470432265212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206400606906627117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef89d618f34a68644a774cd8e52b856b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

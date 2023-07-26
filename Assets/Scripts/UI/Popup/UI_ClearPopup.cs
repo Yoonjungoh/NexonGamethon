@@ -19,10 +19,12 @@ public class UI_ClearPopup : UI_Popup
         Managers.Game.InGameBranches.Clear();
         Managers.Game.monsters.Clear();
         Managers.Game.Crystal = Managers.Game.CrystalDefaultValue;
+        Time.timeScale = 0;
     }
 
     void GoToShopScene()
     {
+        Managers.Sound.Play("EffectSound/ButtonClickSound", Define.Sound.Effect);
         Time.timeScale = 1;
         Managers.Game.CanUseUltimateSkill = true;
         Managers.Scene.LoadScene("OutGame");
