@@ -11,10 +11,10 @@ public class UltimateSkillController : MonoBehaviour
             Managers.Game.CanUseUltimateSkill = false;
             if (Managers.Game.monsters.Count != 0)
             {
-                foreach (MonsterController monster in Managers.Game.monsters)
+                for (int i = 0; i < Managers.Game.monsters.Count; i++)
                 {
                     float damage = 50 + (Managers.Game.UltimateSkillLevel * 50);
-                    monster.OnDamaged(damage);
+                    Managers.Game.monsters[i].OnDamaged(damage);
                 }
             }
         }

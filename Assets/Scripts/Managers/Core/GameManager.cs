@@ -14,10 +14,10 @@ public class GameManager
     public SpawnPoint[] SpawnPoints;
 
     // 터렛 강화 정보
-    public float[] SquirrelCost;
-    public float[] OwlCost;
-    public float[] DeerCost;
-    public float[] BearCost;
+    public float SquirrelCost = 10;
+    public float OwlCost = 20;
+    public float DeerCost = 25;
+    public float BearCost = 40;
 
 
     // 필살기 강화 정보
