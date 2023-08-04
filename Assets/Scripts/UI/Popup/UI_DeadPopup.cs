@@ -12,6 +12,7 @@ public class UI_DeadPopup : UI_Popup
     }
     void Start()
     {
+        Time.timeScale = 0;
         Managers.Game.Gaming = false;
         Bind<Button>(typeof(Buttons));
 
