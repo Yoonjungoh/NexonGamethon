@@ -3816,11 +3816,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4060850967171048951, guid: 6a6bfb68a536ff049a79e3fb20f44669, type: 3}
       propertyPath: m_ShowToolkit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4060850967171048951, guid: 6a6bfb68a536ff049a79e3fb20f44669, type: 3}
       propertyPath: m_ShowCustomSorter
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 958505281019230072, guid: 6a6bfb68a536ff049a79e3fb20f44669, type: 3}
       propertyPath: m_RootOrder
