@@ -46,6 +46,7 @@ public class TouchTurretController : MonoBehaviour
             }
             GameObject turret = Managers.Resource.Instantiate($"Turret/{turretName}");
             turret.transform.position = transform.position;
+            Managers.Sound.Play("Effect/UpgradeSound");
             Managers.Resource.Destroy(gameObject);
         }
         else
