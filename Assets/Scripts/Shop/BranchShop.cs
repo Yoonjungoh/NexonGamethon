@@ -37,7 +37,7 @@ public class BranchShop : MonoBehaviour
 
     public void ShowPopup_L(int idx)
     {
-        
+        Managers.Sound.Play("Effect/ButtonClickSound");
         //popupTxt_L.text= "가격은 " + Managers.Game.branchLPrice[idx] + "입니다";
         //가지 구매했으면 리턴
         if (Managers.Game.branchL[idx]) return;
@@ -60,6 +60,7 @@ public class BranchShop : MonoBehaviour
     }
     public void ShowPopup_R(int idx)
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         //가지 구매했으면 리턴
         if (Managers.Game.branchR[idx]) return;
         //이전 가지 구매한 적 없으면 리턴
@@ -82,15 +83,18 @@ public class BranchShop : MonoBehaviour
 
     public void ClosePopup_L()
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         popupAnimator_L.SetTrigger("doHide");
     }
     public void ClosePopup_R()
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         popupAnimator_R.SetTrigger("doHide");
     }
 
     public void buyBranch_L()
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         //코인 부족 리턴
         if (Managers.Game.coin < Managers.Game.branchLPrice[branchLNum]) return;
 
@@ -111,6 +115,7 @@ public class BranchShop : MonoBehaviour
     }
     public void buyBranch_R()
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         //코인 부족 리턴
         if (Managers.Game.coin < Managers.Game.branchRPrice[branchRNum]) return;
 

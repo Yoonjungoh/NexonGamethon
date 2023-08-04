@@ -19,6 +19,7 @@ public class test : MonoBehaviour
 
     public void LoadSceneByName()
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         string sceneName = $"Stage{Managers.Game.CurrentStage}";
         Managers.Scene.LoadScene(sceneName);
     }

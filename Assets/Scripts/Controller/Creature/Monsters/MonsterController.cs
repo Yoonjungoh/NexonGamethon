@@ -8,6 +8,8 @@ public class MonsterController : CreatureController
     protected BoxCollider2D boxCollider;
     protected TreeController _target;
     protected Animator _animator;
+    protected SpriteRenderer _sr;
+    protected AudioSource _audio;
     public Define.MonsterType type;
     public Define.MoveDir moveDir;
     public GameObject bulletPoint;
@@ -19,6 +21,7 @@ public class MonsterController : CreatureController
     public float debuffMoveSpeed = 0.3f;
     public float bulletSpeed = 10f;
     public Vector2 originLocalscale;
+    
     public void DebuffMoveSpeed()
     {
         StartCoroutine(CoDebuffMoveSpeed());
@@ -32,9 +35,12 @@ public class MonsterController : CreatureController
     protected virtual void Init()
     {
         originLocalscale = new Vector2(transform.localScale.x, transform.localScale.y);
+        _sr = GetComponent<SpriteRenderer>();
         Stat = GetComponent<Stat>();
         _animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        _audio = GetComponent<AudioSource>();
+        //_audio.volume = 0.5f;
         icicle = Managers.Resource.Load<GameObject>("Creature/Icicle");
         InitStat();
 
@@ -56,6 +62,7 @@ public class MonsterController : CreatureController
         }
         if (transform.childCount == 1)
             bulletPoint = transform.GetChild(0).gameObject;
+        _sr.color = new Color(_sr.color.r, _sr.color.g, _sr.color.b, 0);
     }
     protected void InitStat()
     {
@@ -144,6 +151,7 @@ public class MonsterController : CreatureController
         timer += Time.deltaTime;
         if (timer > MovingDelay)
         {
+            _sr.color = new Color(_sr.color.r, _sr.color.g, _sr.color.b, 1);
             State = Define.CreatureState.Moving;
             MovingDelay = 100000f;
         }

@@ -77,6 +77,7 @@ public class TurretShop : MonoBehaviour
     }
     public void TurretUpgrade(int turretNum)
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         //터렛 레벨 3이상이면 리턴
         if (Managers.Game.turret_Lv[turretNum] >= 3) return;
         //코인 부족하면 리턴

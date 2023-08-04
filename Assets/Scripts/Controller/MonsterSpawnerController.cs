@@ -21,9 +21,9 @@ public class MonsterSpawnerController : MonoBehaviour
         GameObject go = Managers.Resource.Instantiate($"Creature/Monster/{name}");
         float randX;
         if (dir == Define.MoveDir.Left)
-            randX = -20;
+            randX = -30;
         else
-            randX = 20;
+            randX = 30;
         go.transform.position = new Vector3(randX, 1, 1);
         MonsterController monster = go.GetComponent<MonsterController>();
         monster.MovingDelay = 0f;
@@ -53,9 +53,9 @@ public class MonsterSpawnerController : MonoBehaviour
             GameObject go = Managers.Resource.Instantiate($"Creature/Monster/{type}Monster");
             float randX ;
             if (dir == Define.MoveDir.Left)
-                randX = -20;
+                randX = -30;
             else
-                randX = 20;
+                randX = 30;
             go.transform.position = new Vector3(randX, 1, 1);
             MonsterController monster = go.GetComponent<MonsterController>();
             Managers.Game.monsters.Add(monster);

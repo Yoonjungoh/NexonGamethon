@@ -8,6 +8,7 @@ public class CreatureController : MonoBehaviour
     public Define.CreatureState State;
     virtual public float OnDamaged(float damage)
     {
+        Managers.Sound.Play("Effect/Hit");
         Stat.Hp -= damage;
         if (Stat.Hp <= 0)
         {

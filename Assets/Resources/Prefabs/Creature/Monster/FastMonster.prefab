@@ -160,6 +160,7 @@ MonoBehaviour:
   debuffTime: 3
   debuffMoveSpeed: 0.3
   bulletSpeed: 10
+  originLocalscale: {x: 0, y: 0}
 --- !u!114 &5259212438466986736
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class SceneLoad : MonoBehaviour
 
     public void GameStart()
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         PlayerPrefs.SetInt("isSave", 0);
         Managers.Scene.LoadScene("OutGame");
     }
@@ -15,6 +16,7 @@ public class SceneLoad : MonoBehaviour
 
     public void GameExit()
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         PlayerPrefs.SetInt("isSave", 0);
         Application.Quit();
     }

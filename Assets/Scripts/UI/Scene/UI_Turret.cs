@@ -139,6 +139,7 @@ public class UI_Turret : UI_Scene
     }
     void BuyTurret(string name)
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         // 이미 눌려 있는 터렛 버튼 다시 누른 경우
         if (GameObject.Find($"{name}"))
         {

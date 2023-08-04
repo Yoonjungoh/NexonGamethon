@@ -21,6 +21,7 @@ public class TreeLevelShop : MonoBehaviour
 
     public void ShowPopup(int idx)
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         //나무 레벨 2 이상이면 리턴
         if (Managers.Game.treeLevel >= 2) return;
 
@@ -41,7 +42,7 @@ public class TreeLevelShop : MonoBehaviour
 
     public void treeUpgrade()
     {
-
+        Managers.Sound.Play("Effect/ButtonClickSound");
         //코인 부족하면 리턴
         if (Managers.Game.coin < Managers.Game.treePrices[Managers.Game.treeLevel]) return;
 
@@ -58,6 +59,7 @@ public class TreeLevelShop : MonoBehaviour
 
     public void ClosePopup()
     {
+        Managers.Sound.Play("Effect/ButtonClickSound");
         popupAnimator.SetTrigger("doHide");
     }
 
