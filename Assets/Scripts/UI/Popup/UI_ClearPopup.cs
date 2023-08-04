@@ -25,7 +25,6 @@ public class UI_ClearPopup : UI_Popup
     void GoToShopScene()
     {
         Managers.Sound.Play("Effect/ButtonClickSound");
-        Time.timeScale = 1;
         Managers.Game.CanUseUltimateSkill = true;
         Managers.Scene.LoadScene("OutGame");
         gameObject.SetActive(true);
