@@ -33,6 +33,7 @@ public class BranchController : MonoBehaviour
             else if (i == 1 && Managers.Game.branchR[i] == false && this.type == Define.BranchType.R2)
                 gameObject.SetActive(false);
         }
+        GameObject.Find("UI_Turret").GetComponent<UI_Turret>().InitSpawnPoints();
     }
 
     void Update()

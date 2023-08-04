@@ -71,9 +71,11 @@ public class UI_Turret : UI_Scene
         }
         else
             GetTextMeshProUGUI((int)Texts.BearCostText).text = $"{Managers.Game.BearCost}";
-
+    }
+    public void InitSpawnPoints()
+    {
         GameObject[] gos = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        spawnPoints = new SpawnPoint[gos.Length]; 
+        spawnPoints = new SpawnPoint[gos.Length];
         for (int i = 0; i < gos.Length; i++)
             spawnPoints[i] = new SpawnPoint(gos[i], false);
         Managers.Game.SpawnPoints = spawnPoints;
